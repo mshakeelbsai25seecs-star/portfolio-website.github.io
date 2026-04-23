@@ -95,9 +95,9 @@
 
   /* PROJECTS */
   #projects{background:var(--bg2);}
-  .projects-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;}
-  .filter-btn{padding:7px 18px;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.04em;border:1px solid var(--border);color:var(--text-muted);background:transparent;cursor:pointer;transition:all .2s;font-family:var(--font-head);}
-  .filter-btn:hover,.filter-btn.active{background:var(--cyan-dim);border-color:var(--border-bright);color:var(--cyan);}
+  .proj-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:48px;}
+  .proj-btn{padding:7px 18px;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.04em;border:1px solid var(--border);color:var(--text-muted);background:transparent;cursor:pointer;transition:all .2s;font-family:var(--font-head);}
+  .proj-btn:hover,.proj-btn.active{background:var(--cyan-dim);border-color:var(--border-bright);color:var(--cyan);}
   .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px;}
   .project-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s;display:flex;flex-direction:column;cursor:pointer;}
   .project-card:hover{border-color:var(--border-bright);transform:translateY(-4px);box-shadow:var(--glow);}
@@ -145,9 +145,9 @@
   .cert-tag.purple{background:rgba(167,139,250,.1);color:#a78bfa;border-color:rgba(167,139,250,.2);}
   .cert-tag.red{background:rgba(248,113,113,.1);color:#f87171;border-color:rgba(248,113,113,.2);}
   .cert-tag.orange{background:rgba(251,146,60,.1);color:#fb923c;border-color:rgba(251,146,60,.2);}
-  .cert-cred-link{font-size:.75rem;font-weight:600;color:var(--cyan);text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:gap .2s;}
-  .cert-cred-link:hover{gap:7px;}
   .cert-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;}
+  .cert-btn{padding:7px 18px;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.04em;border:1px solid var(--border);color:var(--text-muted);background:transparent;cursor:pointer;transition:all .2s;font-family:var(--font-head);}
+  .cert-btn:hover,.cert-btn.active{background:var(--cyan-dim);border-color:var(--border-bright);color:var(--cyan);}
 
   /* CONTACT */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
@@ -205,7 +205,7 @@
   }
   @media(max-width:600px){
     .projects-grid,.achievements-grid{grid-template-columns:1fr;}
-    .cert-grid{grid-template-columns:1fr 1fr;}
+    .cert-grid{grid-template-columns:1fr;}
     .hero-stats{gap:24px;}
   }
   ::-webkit-scrollbar{width:6px;}
@@ -220,49 +220,24 @@
 ╔══════════════════════════════════════════════════════════════╗
 ║              CONFIGURATION — EDIT BEFORE DEPLOYING           ║
 ╠══════════════════════════════════════════════════════════════╣
-║                                                              ║
-║  STEP 1 — CREATE GITHUB ASSETS REPO                          ║
-║  ─────────────────────────────────────────────────────────   ║
-║  • Create a NEW public GitHub repo, e.g. "portfolio-assets"  ║
-║  • Inside it create two folders:                             ║
-║      /screenshots/   → upload project-1.jpg … project-23.jpg║
-║      /certificates/  → upload cert-1.jpg     … cert-31.jpg  ║
-║  • Images are loaded in the same order as the projects list. ║
-║  • Set GITHUB_USER and GITHUB_ASSETS_REPO below.             ║
-║                                                              ║
-║  STEP 2 — SET UP EMAILJS (free at emailjs.com)               ║
-║  ─────────────────────────────────────────────────────────   ║
-║  a) Sign up → Email Services → Add Gmail service             ║
-║     Copy the Service ID  →  EMAILJS_SERVICE_ID               ║
-║  b) Email Templates → Create template                        ║
-║     Use these variables in the template body:                ║
-║       {{from_name}}  {{from_email}}  {{subject}}  {{message}}║
-║     Set "To Email" = nouman.shakeel555@gmail.com             ║
-║     Copy the Template ID  →  EMAILJS_TEMPLATE_ID             ║
-║  c) Account → API Keys → Public Key                          ║
-║     Copy it  →  EMAILJS_PUBLIC_KEY                           ║
-║                                                              ║
-║  STEP 3 — HOST THE FILE                                       ║
-║  ─────────────────────────────────────────────────────────   ║
-║  • GitHub Pages: push to /docs or root, enable Pages         ║
-║  • Netlify / Vercel: drag-and-drop this single HTML file     ║
-║                                                              ║
+║  STEP 1 — GITHUB ASSETS REPO                                 ║
+║  Create a public repo "portfolio-assets" with:               ║
+║    /screenshots/project-1.jpg … project-24.jpg               ║
+║  STEP 2 — EMAILJS  (emailjs.com)                             ║
+║    Replace the three EJ_ values below with your keys.        ║
+║  STEP 3 — HOST on GitHub Pages / Netlify / Vercel            ║
 ╚══════════════════════════════════════════════════════════════╝
 -->
 <script>
-// ① GitHub Assets
-const GITHUB_USER        = 'noumanshakeel555-lang';  // ← your GitHub username
-const GITHUB_ASSETS_REPO = 'portfolio-assets';        // ← your public assets repo
-const GITHUB_BRANCH      = 'main';                    // ← branch name
-
-const GH = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_ASSETS_REPO}/${GITHUB_BRANCH}`;
+const GITHUB_USER        = 'noumanshakeel555-lang';
+const GITHUB_ASSETS_REPO = 'portfolio-assets';
+const GITHUB_BRANCH      = 'main';
+const GH     = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_ASSETS_REPO}/${GITHUB_BRANCH}`;
 const projImg = n => `${GH}/screenshots/project-${n}.jpg`;
-const certImg = n => `${GH}/certificates/cert-${n}.jpg`;
 
-// ② EmailJS
-const EJ_KEY      = 'a4KLMYOjTYPz3LE72';   // ← replace
-const EJ_SERVICE  = 'service_w7pkxud';            // ← replace
-const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
+const EJ_KEY      = 'a4KLMYOjTYPz3LE72';
+const EJ_SERVICE  = 'service_w7pkxud';
+const EJ_TEMPLATE = 'template_hbkd4sr';
 </script>
 
 <!-- NAV -->
@@ -297,9 +272,9 @@ const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
       </a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><span class="stat-num">23+</span><span class="stat-label">AI Projects</span></div>
+      <div class="stat"><span class="stat-num">24+</span><span class="stat-label">AI Projects</span></div>
       <div class="stat"><span class="stat-num">34</span><span class="stat-label">Trophies</span></div>
-      <div class="stat"><span class="stat-num">33</span><span class="stat-label">Certificates</span></div>
+      <div class="stat"><span class="stat-num">39</span><span class="stat-label">Certificates</span></div>
       <div class="stat"><span class="stat-num">3</span><span class="stat-label">Internships</span></div>
     </div>
     <div class="hero-badge"><div class="hero-badge-inner"><span class="big">1st</span><span class="sm">ETEA KPK<br>Final 2025</span></div></div>
@@ -314,13 +289,14 @@ const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
   <div class="about-grid reveal">
     <div class="about-text">
       <p>I'm a <strong>BS Artificial Intelligence student at NUST</strong>, one of Pakistan's premier research universities. My passion lies in building AI systems that solve real-world problems — from surveillance and healthcare to music and language.</p>
-      <p>With hands-on experience across <strong>computer vision, deep learning, NLP, and full-stack AI development</strong>, I've built 23+ production-grade projects spanning everything from real-time object detection to LSTM-based music generation.</p>
+      <p>With hands-on experience across <strong>computer vision, deep learning, NLP, and full-stack AI development</strong>, I've built 24+ production-grade projects spanning everything from real-time object detection to LSTM-based music generation.</p>
       <p>Beyond code, I've topped Pakistan <strong>twice in English Language Proficiency Olympiads</strong>, represented the country internationally in Turkey, and was named <strong>Student of the Year</strong> at The Peace College — a testament to my belief that excellence is a habit, not an accident.</p>
     </div>
     <div class="about-right">
       <div><p class="skill-group-title">Core AI / ML</p><div class="skill-tags"><span class="skill-tag hl">Deep Learning</span><span class="skill-tag hl">Computer Vision</span><span class="skill-tag hl">NLP</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">PyTorch</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">OpenCV</span><span class="skill-tag">MediaPipe</span><span class="skill-tag">Librosa</span></div></div>
-      <div><p class="skill-group-title">Programming</p><div class="skill-tags"><span class="skill-tag hl">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Java</span><span class="skill-tag">C++</span><span class="skill-tag">HTML / CSS</span></div></div>
-      <div><p class="skill-group-title">Web &amp; Deployment</p><div class="skill-tags"><span class="skill-tag">FastAPI</span><span class="skill-tag">Flask</span><span class="skill-tag">REST APIs</span><span class="skill-tag">Streamlit</span><span class="skill-tag">Git / GitHub</span></div></div>
+      <div><p class="skill-group-title">Agentic AI &amp; Cloud</p><div class="skill-tags"><span class="skill-tag hl">Google ADK</span><span class="skill-tag hl">Vertex AI</span><span class="skill-tag">RAG</span><span class="skill-tag">Gemini API</span><span class="skill-tag">Graph RAG</span><span class="skill-tag">Groq AI</span><span class="skill-tag">OpenAI API</span><span class="skill-tag">AWS</span></div></div>
+      <div><p class="skill-group-title">Programming</p><div class="skill-tags"><span class="skill-tag hl">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Java</span><span class="skill-tag">C++</span><span class="skill-tag">HTML / CSS</span><span class="skill-tag">SQL</span></div></div>
+      <div><p class="skill-group-title">Web &amp; Deployment</p><div class="skill-tags"><span class="skill-tag">FastAPI</span><span class="skill-tag">Flask</span><span class="skill-tag">REST APIs</span><span class="skill-tag">Streamlit</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">Cloud Run</span></div></div>
       <div><p class="skill-group-title">Specialised Models</p><div class="skill-tags"><span class="skill-tag">YOLOv8</span><span class="skill-tag">DeepSORT</span><span class="skill-tag">Sentence-BERT</span><span class="skill-tag">LSTM / RNN</span><span class="skill-tag">CNN</span><span class="skill-tag">TF-IDF</span><span class="skill-tag">ARIMA</span></div></div>
     </div>
   </div>
@@ -382,14 +358,14 @@ const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
 <!-- PROJECTS -->
 <section id="projects"><div class="section-inner">
   <p class="section-tag">Portfolio</p>
-  <h2 class="section-title">23 Projects in <em>AI &amp; Beyond</em></h2>
-  <div class="projects-filter">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="cv">Computer Vision</button>
-    <button class="filter-btn" data-filter="nlp">NLP</button>
-    <button class="filter-btn" data-filter="dl">Deep Learning</button>
-    <button class="filter-btn" data-filter="web">Web / Full-Stack</button>
-    <button class="filter-btn" data-filter="ml">Machine Learning</button>
+  <h2 class="section-title">24 Projects in <em>AI &amp; Beyond</em></h2>
+  <div class="proj-filter" id="proj-filter">
+    <button class="proj-btn active" data-pf="all">All</button>
+    <button class="proj-btn" data-pf="cv">Computer Vision</button>
+    <button class="proj-btn" data-pf="nlp">NLP</button>
+    <button class="proj-btn" data-pf="dl">Deep Learning</button>
+    <button class="proj-btn" data-pf="web">Web / Full-Stack</button>
+    <button class="proj-btn" data-pf="ml">Machine Learning</button>
   </div>
   <div class="projects-grid" id="projects-grid"></div>
 </div></section>
@@ -400,7 +376,7 @@ const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
   <p class="section-tag">Recognition</p>
   <h2 class="section-title">Awards &amp; <em>Honours</em></h2>
   <div class="achievements-grid">
-    <div class="achievement-card reveal"><div class="achievement-icon">🏆</div><div class="achievement-title">34 Trophies &amp; 33 Certificates</div><div class="achievement-desc">Broad recognition across academic excellence, technology competitions, and sports achievements throughout my educational career.</div></div>
+    <div class="achievement-card reveal"><div class="achievement-icon">🏆</div><div class="achievement-title">34 Trophies &amp; 39 Certificates</div><div class="achievement-desc">Broad recognition across academic excellence, technology competitions, and sports achievements throughout my educational career.</div></div>
     <div class="achievement-card reveal"><div class="achievement-icon">🥇</div><div class="achievement-title">1st Position — ETEA KPK Final 2025</div><div class="achievement-desc">Secured first place in the ETEA KPK Final 2025 Computer Science examination, competing against thousands of candidates province-wide.</div></div>
     <div class="achievement-card reveal"><div class="achievement-icon">🌍</div><div class="achievement-title">International Finalist — Hippo Competition, Turkey</div><div class="achievement-desc">Represented Pakistan as a finalist in the prestigious Hippo International Language Competition held in Turkey.</div></div>
     <div class="achievement-card reveal"><div class="achievement-icon">🇵🇰</div><div class="achievement-title">Top of Pakistan — English Proficiency Olympiads (×2)</div><div class="achievement-desc">Achieved the highest national ranking in English Language Proficiency Olympiads on two separate occasions.</div></div>
@@ -414,16 +390,16 @@ const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
 <section id="certificates"><div class="section-inner">
   <p class="section-tag">Credentials</p>
   <h2 class="section-title">Certificates &amp; <em>Credentials</em></h2>
-  <div class="cert-count-badge">🏅 33 Certificates &amp; Credentials</div>
+  <div class="cert-count-badge">🏅 39 Certificates &amp; Credentials</div>
   <div class="cert-filter" id="cert-filter">
-    <button class="filter-btn active" data-cf="all">All</button>
-    <button class="filter-btn" data-cf="ai">AI &amp; ML</button>
-    <button class="filter-btn" data-cf="programming">Programming</button>
-    <button class="filter-btn" data-cf="academic">Academic</button>
-    <button class="filter-btn" data-cf="sports">Sports</button>
-    <button class="filter-btn" data-cf="leadership">Leadership</button>
-    <button class="filter-btn" data-cf="professional">Professional</button>
-    <button class="filter-btn" data-cf="internship">Internship</button>
+    <button class="cert-btn active" data-cf="all">All</button>
+    <button class="cert-btn" data-cf="ai">AI &amp; ML</button>
+    <button class="cert-btn" data-cf="programming">Programming</button>
+    <button class="cert-btn" data-cf="academic">Academic</button>
+    <button class="cert-btn" data-cf="sports">Sports</button>
+    <button class="cert-btn" data-cf="leadership">Leadership</button>
+    <button class="cert-btn" data-cf="professional">Professional</button>
+    <button class="cert-btn" data-cf="internship">Internship</button>
   </div>
   <div class="cert-grid" id="cert-grid"></div>
 </div></section>
@@ -437,7 +413,7 @@ const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
     <div>
       <p class="contact-intro">Whether you have a project in mind, an opportunity, or just want to connect — my inbox is always open. Messages arrive directly in my Gmail inbox.</p>
       <div class="contact-items">
-        <a href="/cdn-cgi/l/email-protection#bcd2d3c9d1ddd292cfd4ddd7d9d9d0898989fcdbd1ddd5d092dfd3d1" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span class="__cf_email__" data-cfemail="7c121309111d12520f141d171919104949493c1b111d1510521f1311">[email&#160;protected]</span></a>
+        <a href="mailto:nouman.shakeel555@gmail.com" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>nouman.shakeel555@gmail.com</a>
         <a href="tel:+923405055603" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg></div>+92 340 5055603</a>
         <a href="https://linkedin.com/in/nouman-shakeel" target="_blank" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>linkedin.com/in/nouman-shakeel</a>
         <a href="https://github.com/noumanshakeel555-lang" target="_blank" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>github.com/noumanshakeel555-lang</a>
@@ -462,7 +438,7 @@ const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
   <div class="footer-links">
     <a href="https://linkedin.com/in/nouman-shakeel" target="_blank">LinkedIn</a>
     <a href="https://github.com/noumanshakeel555-lang" target="_blank">GitHub</a>
-    <a href="/cdn-cgi/l/email-protection#b8d6d7cdd5d9d696cbd0d9d3ddddd48d8d8df8dfd5d9d1d496dbd7d5">Email</a>
+    <a href="mailto:nouman.shakeel555@gmail.com">Email</a>
   </div>
 </footer>
 
@@ -475,7 +451,7 @@ const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── CANVAS ── */
 (()=>{
   const c=document.getElementById('canvas-bg'),x=c.getContext('2d');
@@ -491,9 +467,7 @@ const EJ_TEMPLATE = 'template_hbkd4sr';           // ← replace
   };d();
 })();
 
-/* ── SHOW GITHUB INFO — projects section ── */
-
-/* ── PROJECTS DATA ── */
+/* ── PROJECTS ── */
 const PROJECTS=[
   {id:1, name:"AI-Powered Smart Surveillance System",     tags:["cv","dl"],   stack:"Python · OpenCV · Email API",               desc:"Real-time intruder detection combining motion sensing and night vision. Sends automated email alerts with snapshot evidence and maintains a persistent event log for security review."},
   {id:2, name:"Real-time Object Detection & Tracking",    tags:["cv","dl"],   stack:"YOLOv8 · DeepSORT · OpenCV",                desc:"Multi-object detection and tracking with persistent ID assignment across frames. Supports live webcam and video file input with real-time bounding box visualisation.",gh:"CodeAlpha_object-detection-system"},
@@ -518,10 +492,10 @@ const PROJECTS=[
   {id:21,name:"Chess AI (Web App)",                       tags:["web","ml"],  stack:"Flask · JavaScript · Minimax AI",           desc:"Web chess game with Player vs Player and Player vs AI modes, full legal move validation, check/checkmate detection, and a Minimax AI engine with alpha-beta pruning.",gh:"chess-project"},
   {id:22,name:"Price Comparison Web Scraper",             tags:["web","ml"],  stack:"Python · BeautifulSoup · Flask",            desc:"Web scraper extracting product prices and ratings from Daraz and Amazon, combined with AI-driven recommendations to help buyers find the best alternatives.",gh:"price-fighter"},
   {id:23,name:"Augmented Reality Prototype",              tags:["cv","dl"],   stack:"Python · OpenCV · AR",                     desc:"AR prototype demonstrating real-time virtual object overlay onto live camera feeds using marker detection, homography transforms, and OpenCV computer vision.",gh:"augmented-reality-project"},
+  {id:24,name:"Point Cloud Sparse Segmentation",          tags:["cv","dl"],   stack:"Python · Sparse CNN · 3D Vision",           desc:"3D point cloud segmentation system using sparse convolutional networks to classify and segment objects in LiDAR-style spatial data — a frontier technique in autonomous vehicle perception and robotics.",gh:"point-sparse-segmentation"},
 ];
 const TL={cv:'Computer Vision',nlp:'NLP',dl:'Deep Learning',web:'Web App',ml:'Machine Learning'};
 
-/* ── RENDER PROJECTS ── */
 function renderProjects(filter){
   const grid=document.getElementById('projects-grid');
   grid.innerHTML='';
@@ -554,9 +528,9 @@ function renderProjects(filter){
   observeReveal();
 }
 renderProjects('all');
-document.querySelectorAll('.filter-btn').forEach(b=>b.addEventListener('click',function(){
-  document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));
-  this.classList.add('active'); renderProjects(this.dataset.filter);
+document.querySelectorAll('#proj-filter .proj-btn').forEach(b=>b.addEventListener('click',function(){
+  document.querySelectorAll('#proj-filter .proj-btn').forEach(x=>x.classList.remove('active'));
+  this.classList.add('active'); renderProjects(this.dataset.pf);
 }));
 
 /* ── MODAL ── */
@@ -574,30 +548,34 @@ function openModal(p,ghUrl){
 }
 function closeModal(e){if(e.target.id==='project-modal')document.getElementById('project-modal').classList.remove('open');}
 
-/* ── CERTIFICATES DATA ── */
+/* ── CERTIFICATES ── */
 const CERT_LOGOS = {
-  microsoft: {bg:'#0078D4',text:'#fff',label:'MS',svg:`<svg viewBox="0 0 20 20" width="26" height="26"><rect x="1" y="1" width="8.5" height="8.5" fill="#f25022"/><rect x="10.5" y="1" width="8.5" height="8.5" fill="#7fba00"/><rect x="1" y="10.5" width="8.5" height="8.5" fill="#00a4ef"/><rect x="10.5" y="10.5" width="8.5" height="8.5" fill="#ffb900"/></svg>`},
-  hippo:     {bg:'#0e4d6e',text:'#7dd3fc',label:'H',   svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#7dd3fc" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12s1-2 4-2 4 2 4 2"/><circle cx="9" cy="9" r="1" fill="#7dd3fc"/><circle cx="15" cy="9" r="1" fill="#7dd3fc"/></svg>`},
-  peace:     {bg:'#064e3b',text:'#34d399',label:'PC',  svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`},
-  etea:      {bg:'#78350f',text:'#fbbf24',label:'E',   svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fbbf24" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`},
-  sololearn: {bg:'#1a6b2a',text:'#4ade80',label:'SL',  svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#4ade80" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`},
-  hplife:    {bg:'#1e3a5f',text:'#60a5fa',label:'HP',  svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`},
-  aws:       {bg:'#451a03',text:'#fb923c',label:'AWS', svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fb923c" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`},
-  creative:  {bg:'#2e1065',text:'#c084fc',label:'CL',  svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c084fc" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`},
-  arch:      {bg:'#1e1b4b',text:'#818cf8',label:'AT',  svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#818cf8" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`},
-  bise:      {bg:'#1c1917',text:'#a8a29e',label:'B',   svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#a8a29e" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>`},
-  codealpha: {bg:'#0c2340',text:'#63B3FF',label:'CA',  svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#63B3FF" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>`},
+  google:    {bg:'#fff',svg:`<svg viewBox="0 0 24 24" width="26" height="26"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>`},
+  microsoft: {bg:'#0078D4',svg:`<svg viewBox="0 0 20 20" width="26" height="26"><rect x="1" y="1" width="8.5" height="8.5" fill="#f25022"/><rect x="10.5" y="1" width="8.5" height="8.5" fill="#7fba00"/><rect x="1" y="10.5" width="8.5" height="8.5" fill="#00a4ef"/><rect x="10.5" y="10.5" width="8.5" height="8.5" fill="#ffb900"/></svg>`},
+  hippo:     {bg:'#0e4d6e',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#7dd3fc" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12s1-2 4-2 4 2 4 2"/><circle cx="9" cy="9" r="1" fill="#7dd3fc"/><circle cx="15" cy="9" r="1" fill="#7dd3fc"/></svg>`},
+  peace:     {bg:'#064e3b',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`},
+  etea:      {bg:'#78350f',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fbbf24" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`},
+  sololearn: {bg:'#1a6b2a',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#4ade80" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`},
+  hplife:    {bg:'#1e3a5f',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`},
+  aws:       {bg:'#451a03',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fb923c" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`},
+  creative:  {bg:'#2e1065',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#c084fc" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`},
+  arch:      {bg:'#1e1b4b',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#818cf8" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`},
+  bise:      {bg:'#1c1917',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#a8a29e" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>`},
+  codealpha: {bg:'#0c2340',svg:`<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#63B3FF" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>`},
 };
 
-const TAG_STYLE = {
-  ai:'',programming:'green',academic:'gold',sports:'red',leadership:'purple',professional:'orange',internship:'',
-};
+const TAG_STYLE={ai:'',programming:'green',academic:'gold',sports:'red',leadership:'purple',professional:'orange',internship:''};
 
-const CERTS = [
+const CERTS=[
+  // ── GOOGLE (top) ──
+  {title:'Learn AI for Web Developers',issuer:'Google',logo:'google',date:'Apr 2026',cat:'ai',desc:'Google\'s official AI course for developers — covers practical AI integration, working with model APIs, and building intelligent applications using Google\'s tools and AI ecosystem.'},
+  {title:'Build a Multimodal AI Agent with Graph RAG, ADK & Memory Bank',issuer:'Google Cloud',logo:'google',date:'Apr 2026',cat:'ai',desc:'Advanced Google Cloud codelab building a production AI system combining Spanner graph databases, semantic+keyword hybrid search, multimodal processing (text, image, video), multi-agent orchestration, and long-term personalisation with Vertex AI Memory Bank.'},
+  {title:'Build a Bargaining Shopkeeper Agent — Gemini 3 & ADK',issuer:'Google Cloud',logo:'google',date:'Apr 2026',cat:'ai',desc:'Hands-on codelab using Gemini 3 and Google\'s Agent Development Kit (ADK) to build a conversational AI sales agent deployed on Google Cloud Run — covering agentic design patterns and LLM-powered negotiation logic.'},
+  {title:'Building Agents with Retrieval-Augmented Generation',issuer:'Google Cloud',logo:'google',date:'Apr 2026',cat:'ai',desc:'End-to-end Agentic RAG codelab on Google Cloud: built a financial analysis agent combining Vertex AI Search over SEC filings with a custom Python tool for stock price data, orchestrated using the Agent Development Kit (ADK).',cred:'Vlad Kolesnikov / Google'},
   // ── MICROSOFT ──
   {title:'Discover Data Analysis',issuer:'Microsoft',logo:'microsoft',date:'Apr 2026',cat:'ai',desc:'Completed Microsoft\'s official data analysis learning path, covering foundational techniques for interpreting, visualising, and deriving insights from structured datasets.'},
-  {title:'Explore AI Basics',issuer:'Microsoft',logo:'microsoft',date:'2026',cat:'ai',desc:'Gained a solid understanding of core artificial intelligence concepts including machine learning fundamentals, model types, and AI applications in the real world — certified by Microsoft.'},
-  {title:'Introduction to Generative AI and Agents',issuer:'Microsoft',logo:'microsoft',date:'Apr 2026',cat:'ai',desc:'Explored the principles behind generative AI models, large language models, and AI agents, covering architectures like transformers and their use in modern AI products.'},
+  {title:'Explore AI Basics',issuer:'Microsoft',logo:'microsoft',date:'2026',cat:'ai',desc:'Gained a solid understanding of core AI concepts including machine learning fundamentals, model types, and AI applications in the real world — certified by Microsoft.'},
+  {title:'Introduction to Generative AI and Agents',issuer:'Microsoft',logo:'microsoft',date:'Apr 2026',cat:'ai',desc:'Explored the principles behind generative AI models, large language models, and AI agents, covering transformer architectures and their use in modern AI products.'},
   {title:'Embrace Responsible AI Principles',issuer:'Microsoft',logo:'microsoft',date:'Apr 2026',cat:'ai',desc:'Studied Microsoft\'s responsible AI framework including fairness, reliability, privacy, inclusiveness, and transparency — essential pillars for ethical AI deployment.'},
   // ── HIPPO ──
   {title:'12th Int\'l English Language Olympiad 2024',issuer:'HIPPO — English Without Borders',logo:'hippo',date:'May 2024',cat:'academic',desc:'Represented Pakistan in the Global Final Round in Turkey after achieving 1st position in Pakistan in the national final. A prestigious international academic honour.',cred:'Muhammad Nouman Shakeel - 0754'},
@@ -618,33 +596,34 @@ const CERTS = [
   // ── CREATIVE LEARNING ──
   {title:'20th International Kangaroo Linguistic Contest',issuer:'Creative Learning',logo:'creative',date:'Jan 2023',cat:'academic',desc:'Placed 1st in Haripur District and 20th in Pakistan in this international linguistic contest, competing against thousands of students across the country.',cred:'23-995-21697-10-041-E'},
   // ── SOLOLEARN ──
-  {title:'Critical Thinking in the Age of AI',issuer:'Sololearn',logo:'sololearn',date:'Mar 2026',cat:'ai',desc:'Completed a course on applying structured critical thinking and logical reasoning to AI tools, evaluating AI outputs, and navigating bias in machine-generated content.',cred:'CC-WMVVOA5Q'},
-  {title:'Java Intermediate',issuer:'Sololearn',logo:'sololearn',date:'Mar 2026',cat:'programming',desc:'Advanced Java programming course covering object-oriented design patterns, collections, exception handling, file I/O, and intermediate-level algorithms.',cred:'CC-DYOEVWFR'},
+  {title:'Critical Thinking in the Age of AI',issuer:'Sololearn',logo:'sololearn',date:'Mar 2026',cat:'ai',desc:'Completed a course on applying structured critical thinking to AI tools, evaluating AI outputs, and navigating bias in machine-generated content.',cred:'CC-WMVVOA5Q'},
+  {title:'Java Intermediate',issuer:'Sololearn',logo:'sololearn',date:'Mar 2026',cat:'programming',desc:'Advanced Java course covering OOP design patterns, collections, exception handling, file I/O, and intermediate-level algorithms.',cred:'CC-DYOEVWFR'},
   {title:'Machine Learning for Beginners',issuer:'Sololearn',logo:'sololearn',date:'Feb 2026',cat:'ai',desc:'Covered supervised and unsupervised learning, model evaluation, regression, classification, and an introduction to generative AI — foundational ML concepts made practical.',cred:'CC-5JBYNKQU'},
-  {title:'Prompt Engineering',issuer:'Sololearn',logo:'sololearn',date:'Feb 2026',cat:'ai',desc:'Studied the principles of effective prompt design for large language models, including zero-shot, few-shot, and chain-of-thought prompting strategies for real-world AI applications.',cred:'CC-IBXTPWLS'},
+  {title:'Prompt Engineering',issuer:'Sololearn',logo:'sololearn',date:'Feb 2026',cat:'ai',desc:'Studied effective prompt design for large language models, including zero-shot, few-shot, and chain-of-thought prompting strategies for real-world AI applications.',cred:'CC-IBXTPWLS'},
   {title:'Introduction to SQL',issuer:'Sololearn',logo:'sololearn',date:'Feb 2026',cat:'programming',desc:'Mastered relational database fundamentals: SELECT queries, JOINs, GROUP BY, subqueries, and data manipulation using MySQL syntax.',cred:'CC-LXXVUQGI'},
-  {title:'Introduction to Java',issuer:'Sololearn',logo:'sololearn',date:'Feb 2026',cat:'programming',desc:'Completed a foundational Java course covering syntax, variables, control flow, OOP basics, and introductory data structures.',cred:'CC-WZDY0Q5I'},
-  {title:'Coding Foundations (Python, HTML, MySQL)',issuer:'Sololearn',logo:'sololearn',date:'Feb 2026',cat:'programming',desc:'Multi-language foundational course covering Python scripting, HTML web structure, and MySQL database queries — building a broad programming base across three key technologies.',cred:'CC-MSCXFPBG'},
+  {title:'Introduction to Java',issuer:'Sololearn',logo:'sololearn',date:'Feb 2026',cat:'programming',desc:'Foundational Java course covering syntax, variables, control flow, OOP basics, and introductory data structures.',cred:'CC-WZDY0Q5I'},
+  {title:'Coding Foundations (Python, HTML, MySQL)',issuer:'Sololearn',logo:'sololearn',date:'Feb 2026',cat:'programming',desc:'Multi-language foundational course covering Python scripting, HTML web structure, and MySQL database queries.',cred:'CC-MSCXFPBG'},
   {title:'Introduction to Python',issuer:'Sololearn',logo:'sololearn',date:'Feb 2026',cat:'programming',desc:'Core Python programming course covering variables, data types, control flow, functions, and file handling — the language at the heart of AI and data science.',cred:'CC-KD0X37IR'},
   // ── HP LIFE ──
   {title:'Data Science and Analytics',issuer:'HP LIFE',logo:'hplife',date:'Feb 2026',cat:'ai',desc:'HP LIFE course covering data science workflows, exploratory data analysis, statistical thinking, and applying analytics to solve real business problems.'},
-  {title:'AI for Beginners',issuer:'HP LIFE',logo:'hplife',date:'Feb 2026',cat:'ai',desc:'Introduction to AI concepts and their practical applications in business and daily life, covering machine learning basics, automation, and AI ethics — certified by HP LIFE.'},
-  {title:'Professional Networking for Career Goals',issuer:'HP LIFE',logo:'hplife',date:'Feb 2026',cat:'professional',desc:'Course on building strategic professional networks, leveraging platforms like LinkedIn, and aligning networking efforts with long-term career growth objectives.'},
-  {title:'Agile Project Management',issuer:'HP LIFE',logo:'hplife',date:'Feb 2026',cat:'professional',desc:'Comprehensive coverage of Agile methodology, Scrum frameworks, sprint planning, and iterative development practices used in modern software and tech project teams.'},
+  {title:'AI for Beginners',issuer:'HP LIFE',logo:'hplife',date:'Feb 2026',cat:'ai',desc:'Introduction to AI concepts and practical applications covering machine learning basics, automation, and AI ethics — certified by HP LIFE.'},
+  {title:'Professional Networking for Career Goals',issuer:'HP LIFE',logo:'hplife',date:'Feb 2026',cat:'professional',desc:'Course on building strategic professional networks, leveraging platforms like LinkedIn, and aligning networking with long-term career growth objectives.'},
+  {title:'Agile Project Management',issuer:'HP LIFE',logo:'hplife',date:'Feb 2026',cat:'professional',desc:'Comprehensive coverage of Agile methodology, Scrum frameworks, sprint planning, and iterative development practices used in modern tech teams.'},
   // ── AWS ──
   {title:'AWS Certifications',issuer:'AWS Community Pakistan',logo:'aws',date:'2026',cat:'ai',desc:'Recognised by AWS Community Pakistan for completing certifications covering cloud fundamentals, AI and generative AI services on AWS, and practical cloud architecture principles.'},
   // ── ARCH TECHNOLOGIES ──
-  {title:'Internship Certificate — Arch Technologies',issuer:'Arch Technologies',logo:'arch',date:'Feb 2026',cat:'internship',desc:'Official internship completion certificate from Arch Technologies, recognising two months of hands-on machine learning work including data preprocessing, model training, and evaluation.'},
-  // ── CODEALPHA (2 Internship certs not in LinkedIn list) ──
-  {title:'Machine Learning Internship Certificate',issuer:'CodeAlpha',logo:'codealpha',date:'2024',cat:'internship',desc:'Completion certificate from CodeAlpha\'s 3-month ML internship programme, awarded for developing production-grade ML models across NLP, computer vision, and audio processing domains.'},
-  {title:'AI Internship Certificate',issuer:'CodeAlpha',logo:'codealpha',date:'2024',cat:'internship',desc:'Certificate of completion from CodeAlpha\'s AI internship programme, awarded for building and testing AI models, working with ML frameworks, and completing end-to-end training pipelines.'},
+  {title:'Internship Certificate — Arch Technologies',issuer:'Arch Technologies',logo:'arch',date:'Feb 2026',cat:'internship',desc:'Official internship completion certificate from Arch Technologies, recognising two months of hands-on ML work including data preprocessing, model training, and evaluation.'},
+  // ── CODEALPHA ──
+  {title:'AI Internship Completion Certificate',issuer:'CodeAlpha',logo:'codealpha',date:'Apr 2026',cat:'internship',desc:'Official completion certificate from CodeAlpha\'s AI Internship Programme, recognising successful delivery of AI projects including chatbot development and applied machine learning.',cred:'CA/DF1/32621'},
+  {title:'AI Internship Letter of Recommendation',issuer:'CodeAlpha',logo:'codealpha',date:'Apr 2026',cat:'internship',desc:'Letter of recommendation from CodeAlpha endorsing strong performance in AI development, chatbot engineering, and applied machine learning during the internship programme.',cred:'CA/DF1/32621'},
+  {title:'Machine Learning Internship Certificate',issuer:'CodeAlpha',logo:'codealpha',date:'2024',cat:'internship',desc:'Completion certificate from CodeAlpha\'s 3-month ML internship, awarded for developing production-grade ML models across NLP, computer vision, and audio processing domains.'},
 ];
 
 function renderCerts(filter){
   const grid=document.getElementById('cert-grid');
   grid.innerHTML='';
   const list=filter==='all'?CERTS:CERTS.filter(c=>c.cat===filter);
-  list.forEach((c,i)=>{
+  list.forEach(c=>{
     const logo=CERT_LOGOS[c.logo]||CERT_LOGOS.arch;
     const tagCls=TAG_STYLE[c.cat]?('cert-tag '+TAG_STYLE[c.cat]):'cert-tag';
     const catLabel=c.cat.charAt(0).toUpperCase()+c.cat.slice(1);
@@ -661,7 +640,7 @@ function renderCerts(filter){
       <div class="cert-desc">${c.desc}</div>
       <div class="cert-footer">
         <span class="cert-date">${c.date}</span>
-        ${c.cred?`<span class="cert-date" style="font-size:.66rem;color:var(--text-dim)">ID: ${c.cred}</span>`:''}
+        ${c.cred?`<span class="cert-date" style="font-size:.66rem;color:var(--text-dim);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">ID: ${c.cred}</span>`:''}
         <span class="${tagCls}">${catLabel}</span>
       </div>`;
     grid.appendChild(card);
@@ -669,12 +648,12 @@ function renderCerts(filter){
   observeReveal();
 }
 renderCerts('all');
-document.querySelectorAll('#cert-filter .filter-btn').forEach(b=>b.addEventListener('click',function(){
-  document.querySelectorAll('#cert-filter .filter-btn').forEach(x=>x.classList.remove('active'));
+document.querySelectorAll('#cert-filter .cert-btn').forEach(b=>b.addEventListener('click',function(){
+  document.querySelectorAll('#cert-filter .cert-btn').forEach(x=>x.classList.remove('active'));
   this.classList.add('active'); renderCerts(this.dataset.cf);
 }));
 
-/* ── EMAILJS CONTACT FORM ── */
+/* ── EMAILJS ── */
 emailjs.init(EJ_KEY);
 async function sendEmail(){
   const name=document.getElementById('f-name').value.trim();
