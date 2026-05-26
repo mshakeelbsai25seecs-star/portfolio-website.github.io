@@ -6,7 +6,6 @@
 <title>Muhammad Nouman Shakeel — AI Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   :root {
     --bg:#050810;--bg2:#080c18;--surface:rgba(255,255,255,0.03);
@@ -23,15 +22,15 @@
   #canvas-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
 
   /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(5,8,16,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-  .nav-logo{font-size:1.1rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px;text-decoration:none;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:22px;padding:14px clamp(20px,3vw,48px);background:rgba(5,8,16,0.82);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-size:1.08rem;font-weight:800;color:var(--text);display:flex;align-items:center;gap:7px;text-decoration:none;white-space:nowrap;letter-spacing:-.02em;}
   .nav-logo span{color:var(--cyan);}
-  .nav-links{display:flex;gap:36px;list-style:none;}
-  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:.85rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;}
-  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s;}
+  .nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(14px,1.55vw,30px);list-style:none;min-width:0;}
+  .nav-links a{text-decoration:none;color:var(--text-muted);font-size:clamp(.68rem,.72vw,.82rem);font-weight:700;letter-spacing:.105em;text-transform:uppercase;transition:color .2s;position:relative;white-space:nowrap;}
+  .nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s;}
   .nav-links a:hover{color:var(--cyan);}
   .nav-links a:hover::after{right:0;}
-  .nav-cta{background:var(--cyan);color:var(--bg);padding:8px 22px;border-radius:100px;font-size:.82rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;transition:all .2s;}
+  .nav-cta{background:var(--cyan);color:var(--bg);padding:10px 20px;border-radius:100px;font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .2s;white-space:nowrap;box-shadow:0 8px 28px rgba(99,179,255,.18);}
   .nav-cta:hover{background:#fff;transform:translateY(-1px);}
 
   /* HERO */
@@ -149,6 +148,73 @@
   .cert-btn{padding:7px 18px;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.04em;border:1px solid var(--border);color:var(--text-muted);background:transparent;cursor:pointer;transition:all .2s;font-family:var(--font-head);}
   .cert-btn:hover,.cert-btn.active{background:var(--cyan-dim);border-color:var(--border-bright);color:var(--cyan);}
 
+
+  /* POCKETMIND PRODUCT SECTION */
+  #pocketmind{background:radial-gradient(circle at 20% 10%,rgba(99,179,255,.13),transparent 38%),radial-gradient(circle at 85% 20%,rgba(245,200,66,.08),transparent 34%),var(--bg2);}
+  .pocketmind-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:stretch;margin-bottom:34px;}
+  .pm-card{background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid var(--border);border-radius:24px;padding:30px;position:relative;overflow:hidden;box-shadow:0 18px 80px rgba(0,0,0,.22);}
+  .pm-card::before{content:'';position:absolute;inset:-1px;background:linear-gradient(135deg,rgba(99,179,255,.18),transparent 35%,rgba(245,200,66,.09));opacity:.9;pointer-events:none;}
+  .pm-card>*{position:relative;z-index:1;}
+  .pm-kicker{display:inline-flex;gap:8px;align-items:center;padding:7px 13px;border:1px solid var(--border-bright);border-radius:999px;color:var(--cyan);background:var(--cyan-dim);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;}
+  .pm-title{font-size:clamp(2rem,4vw,3.4rem);font-weight:800;line-height:1.02;letter-spacing:-.04em;margin-bottom:18px;}
+  .pm-title em{font-family:var(--font-serif);font-weight:400;color:var(--cyan);}
+  .pm-desc{color:var(--text-muted);font-size:1rem;line-height:1.78;max-width:740px;margin-bottom:24px;}
+  .pm-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
+  .pm-device{min-height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:20px;}
+  .pm-orb{height:230px;border-radius:28px;border:1px solid var(--border-bright);background:radial-gradient(circle at 50% 40%,rgba(99,179,255,.32),rgba(99,179,255,.04) 50%,transparent 70%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .pm-orb::before{content:'';width:150px;height:150px;border-radius:50%;border:1px solid rgba(99,179,255,.42);box-shadow:0 0 60px rgba(99,179,255,.25),inset 0 0 40px rgba(99,179,255,.18);animation:pulseorb 4s ease-in-out infinite;}
+  .pm-orb::after{content:'PocketMind';position:absolute;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.2em;color:var(--cyan);text-transform:uppercase;}
+  .pm-logo-wrap{width:156px;height:156px;border-radius:36px;background:linear-gradient(135deg,rgba(99,179,255,.22),rgba(245,200,66,.08));border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;box-shadow:0 0 45px rgba(99,179,255,.16);position:absolute;z-index:2;overflow:hidden;}
+  .pm-logo-wrap img{position:absolute;inset:22px;width:112px;height:112px;object-fit:contain;filter:drop-shadow(0 16px 34px rgba(99,179,255,.25));z-index:2;}
+  .pm-logo-fallback{font-size:3.3rem;font-weight:800;letter-spacing:-.08em;color:var(--cyan);text-shadow:0 0 34px rgba(99,179,255,.45);}
+
+  @keyframes pulseorb{0%,100%{transform:scale(.96)}50%{transform:scale(1.06)}}
+  .pm-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .pm-metric{background:rgba(5,8,16,.45);border:1px solid var(--border);border-radius:16px;padding:16px;}
+  .pm-metric strong{display:block;font-size:1.25rem;color:var(--cyan);line-height:1;margin-bottom:7px;}
+  .pm-metric span{font-size:.75rem;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase;}
+  .pm-feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;}
+  .pm-feature{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;transition:all .25s;min-height:170px;}
+  .pm-feature:hover{border-color:var(--border-bright);transform:translateY(-3px);box-shadow:var(--glow);}
+  .pm-feature-icon{font-size:1.55rem;margin-bottom:12px;}
+  .pm-feature h3{font-size:.98rem;margin-bottom:8px;line-height:1.3;}
+  .pm-feature p{font-size:.84rem;color:var(--text-muted);line-height:1.62;}
+  .pm-desktop-banner{margin-top:18px;background:linear-gradient(135deg,rgba(245,200,66,.1),rgba(99,179,255,.07));border:1px solid rgba(245,200,66,.22);border-radius:22px;padding:24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;}
+  .pm-desktop-icon{width:58px;height:58px;border-radius:18px;background:rgba(245,200,66,.13);border:1px solid rgba(245,200,66,.3);display:flex;align-items:center;justify-content:center;font-size:1.7rem;}
+  .pm-desktop-banner h3{font-size:1.15rem;margin-bottom:6px;}
+  .pm-desktop-banner p{color:var(--text-muted);font-size:.92rem;line-height:1.7;}
+
+  /* PRIVACY PREVIEW */
+  #privacy{background:var(--bg);}
+  .privacy-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:32px;align-items:start;}
+  .privacy-panel{background:linear-gradient(135deg,rgba(99,179,255,.09),rgba(255,255,255,.02));border:1px solid var(--border-bright);border-radius:22px;padding:28px;position:sticky;top:96px;}
+  .privacy-panel h3{font-size:1.35rem;margin-bottom:12px;}
+  .privacy-panel p{color:var(--text-muted);font-size:.92rem;line-height:1.75;margin-bottom:18px;}
+  .privacy-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .privacy-item{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;}
+  .privacy-item strong{display:block;color:var(--text);font-size:.95rem;margin-bottom:6px;}
+  .privacy-item span{display:block;color:var(--text-muted);font-size:.82rem;line-height:1.55;}
+
+
+
+
+  /* HIDDEN FULL PRIVACY POLICY
+     This section is intentionally not part of normal page scrolling.
+     It appears only when opened directly through #privacy-policy, which keeps the main website clean while still giving Play Store a public in-page policy link. */
+  #privacy-policy{display:none;background:radial-gradient(circle at 80% 10%,rgba(99,179,255,.09),transparent 30%),var(--bg);min-height:100vh;}
+  #privacy-policy:target{display:block;}
+  #privacy-policy:not(:target)+.divider{display:none;}
+  .policy-card{background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid var(--border);border-radius:24px;padding:34px;box-shadow:0 18px 80px rgba(0,0,0,.22);}
+  .policy-card h1{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.04em;margin-bottom:12px;}
+  .policy-card h1 em{font-family:var(--font-serif);color:var(--cyan);font-weight:400;}
+  .policy-meta{font-family:var(--font-mono);font-size:.78rem;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px;}
+  .policy-card h2{font-size:1.25rem;margin:30px 0 10px;color:var(--text);}
+  .policy-card p,.policy-card li{color:var(--text-muted);font-size:.95rem;line-height:1.8;}
+  .policy-card ul{padding-left:22px;margin:10px 0 16px;}
+  .policy-callout{border:1px solid var(--border-bright);background:var(--cyan-dim);border-radius:18px;padding:18px;margin:22px 0;color:var(--text);}
+  .policy-callout strong{color:var(--cyan);}
+  .policy-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;padding-top:24px;border-top:1px solid var(--border);}
+
   /* CONTACT */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
   .contact-intro{font-size:1.05rem;color:var(--text-muted);line-height:1.75;max-width:440px;margin-bottom:28px;}
@@ -192,11 +258,19 @@
   .modal-close:hover{background:var(--cyan-dim);color:var(--cyan);}
 
   /* RESPONSIVE */
+  @media(max-width:1100px){
+    nav{grid-template-columns:auto auto;justify-content:space-between;} .nav-links{display:none;}
+  }
   @media(max-width:900px){
-    nav{padding:16px 24px;} .nav-links{display:none;}
+    nav{padding:14px 22px;}
     #hero{padding:100px 24px 60px;} .hero-badge{display:none;}
     .section-inner{padding:70px 24px;}
     .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px;}
+
+    .pocketmind-hero,.privacy-grid{grid-template-columns:1fr;}
+    .pm-feature-grid{grid-template-columns:1fr 1fr;}
+    .privacy-panel{position:relative;top:auto;}
+
     .form-row{grid-template-columns:1fr;}
     .exp-item{grid-template-columns:1fr;}
     .exp-date{text-align:left;padding-right:0;padding-bottom:8px;}
@@ -204,7 +278,7 @@
     footer{padding:24px;}
   }
   @media(max-width:600px){
-    .projects-grid,.achievements-grid{grid-template-columns:1fr;}
+    .projects-grid,.achievements-grid,.pm-feature-grid,.privacy-list{grid-template-columns:1fr;}
     .cert-grid{grid-template-columns:1fr;}
     .hero-stats{gap:24px;}
   }
@@ -223,8 +297,8 @@
 ║  STEP 1 — GITHUB ASSETS REPO                                 ║
 ║  Create a public repo "portfolio-assets" with:               ║
 ║    /screenshots/project-1.jpg … project-24.jpg               ║
-║  STEP 2 — EMAILJS  (emailjs.com)                             ║
-║    Replace the three EJ_ values below with your keys.        ║
+║  STEP 2 — CONTACT                                             ║
+║    Lead contact routing is built in; update CONTACT_NUMBER.  ║
 ║  STEP 3 — HOST on GitHub Pages / Netlify / Vercel            ║
 ╚══════════════════════════════════════════════════════════════╝
 -->
@@ -235,9 +309,7 @@ const GITHUB_BRANCH      = 'main';
 const GH     = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_ASSETS_REPO}/${GITHUB_BRANCH}`;
 const projImg = n => `${GH}/screenshots/project-${n}.jpg`;
 
-const EJ_KEY      = 'a4KLMYOjTYPz3LE72';
-const EJ_SERVICE  = 'service_w7pkxud';
-const EJ_TEMPLATE = 'template_hbkd4sr';
+const CONTACT_NUMBER = '923405055603';
 </script>
 
 <!-- NAV -->
@@ -247,11 +319,12 @@ const EJ_TEMPLATE = 'template_hbkd4sr';
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#pocketmind">PocketMind</a></li>
+    <li><a href="#privacy">Privacy</a></li>
     <li><a href="#achievements">Achievements</a></li>
     <li><a href="#certificates">Certificates</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://linkedin.com/in/nouman-shakeel" target="_blank" rel="noopener" class="nav-cta">Hire Me ↗</a>
+  <a href="https://wa.me/923405055603?text=Hi%20Nouman%2C%20I%20want%20to%20discuss%20an%20AI%20project." target="_blank" rel="noopener" class="nav-cta">Contact Me ↗</a>
 </nav>
 
 <!-- HERO -->
@@ -267,8 +340,8 @@ const EJ_TEMPLATE = 'template_hbkd4sr';
         View Projects
       </a>
       <a href="#contact" class="btn-secondary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Get In Touch
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+        Contact Me
       </a>
     </div>
     <div class="hero-stats">
@@ -371,6 +444,170 @@ const EJ_TEMPLATE = 'template_hbkd4sr';
 </div></section>
 <div class="divider"></div>
 
+<!-- POCKETMIND -->
+<section id="pocketmind"><div class="section-inner">
+  <p class="section-tag">Flagship Product</p>
+  <h2 class="section-title">PocketMind <em>Hybrid AI</em></h2>
+  <div class="pocketmind-hero reveal">
+    <div class="pm-card">
+      <div class="pm-kicker">Offline + Online AI</div>
+      <h3 class="pm-title">Private AI power, <em>inside your pocket</em></h3>
+      <p class="pm-desc">PocketMind Hybrid AI is an Android AI assistant designed for people who want speed, privacy, and flexibility. It supports local offline LLMs, optional online models, custom GGUF loading, characters, document and image attachments, voice input, voice replies, image generation, model management, and Vulkan-ready mobile GPU acceleration in one polished mobile experience.</p>
+      <p class="pm-desc">The goal is simple: give users a real AI workspace on their phone — not just a chatbot screen. Offline mode keeps prompts local on the device, while online mode gives access to fast cloud models when the user chooses them.</p>
+      <div class="pm-actions">
+        <a href="#privacy" class="btn-primary">View Privacy Details →</a>
+        <a href="#contact" class="btn-secondary">Discuss the App →</a>
+      </div>
+    </div>
+    <div class="pm-card pm-device">
+      <div class="pm-orb"><div class="pm-logo-wrap"><span class="pm-logo-fallback">PM</span><img src="pocketmind-logo.png" alt="PocketMind Hybrid AI logo" onerror="this.style.display='none';"></div></div>
+      <div class="pm-metrics">
+        <div class="pm-metric"><strong>Offline</strong><span>Local LLM Mode</span></div>
+        <div class="pm-metric"><strong>Hybrid</strong><span>Online Providers</span></div>
+        <div class="pm-metric"><strong>GGUF</strong><span>Custom Models</span></div>
+        <div class="pm-metric"><strong>Vulkan</strong><span>Mobile GPU Acceleration</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pm-feature-grid reveal">
+    <div class="pm-feature"><div class="pm-feature-icon">🧠</div><h3>Offline LLM Chat</h3><p>Run supported local models directly on Android for private AI conversations without depending on a cloud server, with Vulkan acceleration support for capable mobile GPUs.</p></div>
+    <div class="pm-feature"><div class="pm-feature-icon">⚡</div><h3>Fast Online Models</h3><p>Optional providers such as Gemini, Groq, Hugging Face, Together AI, and Pollinations can be used when the user wants cloud speed or vision features.</p></div>
+    <div class="pm-feature"><div class="pm-feature-icon">📎</div><h3>File &amp; Image Attachments</h3><p>Attach PDFs, DOCX, text/code files, logs, and images through a clean attachment interface for practical AI workflows.</p></div>
+    <div class="pm-feature"><div class="pm-feature-icon">🎨</div><h3>Image Generation</h3><p>Supports offline, free online, and premium online image generation paths with model/provider separation.</p></div>
+    <div class="pm-feature"><div class="pm-feature-icon">🎭</div><h3>Characters &amp; Personas</h3><p>Create custom AI characters, role-based assistants, and specialized prompt personalities for different tasks.</p></div>
+    <div class="pm-feature"><div class="pm-feature-icon">🔊</div><h3>Voice Workflow</h3><p>Voice input, voice replies, and stop controls make the assistant feel more natural and accessible.</p></div>
+    <div class="pm-feature"><div class="pm-feature-icon">🛠️</div><h3>Storage &amp; Model Control</h3><p>Manage downloaded models, custom imports, backups, settings, and app status from dedicated utility screens.</p></div>
+    <div class="pm-feature"><div class="pm-feature-icon">🔐</div><h3>Privacy-First Design</h3><p>Offline chats stay local. Online requests are sent only to the selected provider when the user chooses an online feature.</p></div>
+  </div>
+  <div class="pm-desktop-banner reveal">
+    <div class="pm-desktop-icon">🖥️</div>
+    <div>
+      <h3>PocketMind Desktop Version — workstation AI power</h3>
+      <p>A desktop version of PocketMind is also being developed with similar hybrid AI functionality, local model support, custom model loading, and flexible runtime paths for CPU mode, NVIDIA GPU acceleration, CUDA builds, and Vulkan-capable systems. It is designed for heavier workloads, larger local models, faster token generation on supported hardware, and workstation-style AI usage while PocketMind Mobile focuses on private, portable intelligence.</p>
+    </div>
+  </div>
+</div></section>
+<div class="divider"></div>
+
+
+<!-- PRIVACY GATEWAY -->
+<section id="privacy"><div class="section-inner">
+  <p class="section-tag">Privacy & Trust</p>
+  <h2 class="section-title">Built for <em>control</em></h2>
+  <div class="privacy-grid reveal">
+    <div class="privacy-panel">
+      <h3>Privacy policy access</h3>
+      <p>PocketMind's full privacy policy is available inside this same website as a dedicated hidden section. It stays out of the normal scrolling experience, but opens instantly when needed for users or Play Store review.</p>
+      <a href="#privacy-policy" class="btn-primary">Open Full Privacy Policy →</a>
+    </div>
+    <div class="privacy-list">
+      <div class="privacy-item"><strong>Offline mode stays local</strong><span>Local chat, document text, and supported offline image generation remain on the user's device when offline mode is selected.</span></div>
+      <div class="privacy-item"><strong>Online mode is optional</strong><span>Cloud AI providers are contacted only when the user chooses an online model or online image provider.</span></div>
+      <div class="privacy-item"><strong>User-controlled files</strong><span>Documents, images, models, backups, and generated images are controlled through app features and Android storage.</span></div>
+      <div class="privacy-item"><strong>No developer ad tracking</strong><span>The app is designed around AI functionality, not selling conversations or using private chats for advertising.</span></div>
+    </div>
+  </div>
+</div></section>
+<div class="divider"></div>
+
+<!-- PRIVACY POLICY — HIDDEN UNTIL OPENED -->
+<section id="privacy-policy"><div class="section-inner">
+  <p class="section-tag">Full Policy</p>
+  <h2 class="section-title">PocketMind <em>Privacy Policy</em></h2>
+  <div class="privacy-grid reveal">
+    <div class="privacy-panel">
+      <h3>Direct policy view</h3>
+      <p>This full policy is intentionally hidden from normal page scrolling. It opens only through the Privacy button or a direct Play Store link ending in <strong>#privacy-policy</strong>.</p>
+      <a href="#privacy" class="btn-primary">Back to Privacy Summary →</a>
+    </div>
+    <div class="privacy-list">
+      <div class="privacy-item"><strong>Offline mode stays local</strong><span>Local prompts, chat messages, document text, and offline image generation stay on the user’s device when offline mode is used.</span></div>
+      <div class="privacy-item"><strong>Online mode is optional</strong><span>When an online provider is selected, request data may be sent directly to that chosen provider for AI processing.</span></div>
+      <div class="privacy-item"><strong>API keys stay on device</strong><span>User-provided provider keys are stored locally and used only to call the selected provider.</span></div>
+      <div class="privacy-item"><strong>No developer cloud collection</strong><span>PocketMind does not operate its own cloud server to sell, analyse, or collect private conversations.</span></div>
+      <div class="privacy-item"><strong>Files are user-controlled</strong><span>Attached PDFs, DOCX files, text files, logs, code files, and images are processed according to the mode selected by the user.</span></div>
+      <div class="privacy-item"><strong>Delete anytime</strong><span>Users can delete local chats, API keys, downloaded models, cache, backups, and app data from the app or Android settings.</span></div>
+    </div>
+  </div>
+  <div class="policy-card reveal" style="margin-top:32px;">
+
+    <div class="pm-kicker">Public Privacy Policy</div>
+    <h1>PocketMind <em>Hybrid AI</em></h1>
+    <div class="policy-meta">Effective Date: May 26, 2026 · Developer: Muhammad Nouman Shakeel / PocketMind · Country: Pakistan</div>
+    <p>PocketMind Hybrid AI (“PocketMind,” “the App,” “we,” “our,” or “us”) is an AI assistant app that allows users to chat with offline AI models, use optional online AI providers, attach documents and images, generate images, manage local models, and customize the app experience.</p>
+    <div class="policy-callout"><strong>Summary:</strong> Offline features are processed locally on your device. Online features are optional and only send information to the selected third-party provider when you choose to use those features. PocketMind does not operate its own cloud server to collect, store, sell, or analyze your private conversations.</div>
+
+    <h2>1. Information We Do Not Collect on Our Servers</h2>
+    <p>PocketMind does not maintain developer-operated servers for collecting user conversations or files. We do not sell your personal data, use your conversations for advertising, collect your private chats on a PocketMind server, or collect your API keys on a PocketMind server.</p>
+
+    <h2>2. Information Stored Locally on Your Device</h2>
+    <p>PocketMind may store information locally on your device, including chat messages, saved conversations, chat titles, custom characters, custom system prompts, app settings, API keys that you choose to save, downloaded offline AI model files, imported GGUF model files, image generation model files, temporary cache files, extracted text from attached files, generated images if you choose to save them, and backup files if you export them.</p>
+
+    <h2>3. API Keys</h2>
+    <p>PocketMind allows you to enter API keys for supported online AI providers. These keys are stored locally on your device. When you use an online provider, the relevant key is sent from your device directly to that provider so the request can be processed. You are responsible for keeping your API keys private and following each provider’s terms, billing rules, usage limits, and privacy policies.</p>
+
+    <h2>4. Offline AI Processing</h2>
+    <p>When using offline GGUF models or other local model features, PocketMind processes AI requests on your device. In offline mode, prompts and responses are not sent to online AI providers by PocketMind. Offline performance depends on your device hardware, available RAM, CPU, Android Vulkan/mobile GPU support where available, storage, and selected model size.</p>
+
+    <h2>5. Online AI Processing</h2>
+    <p>If you select an online model or online image generation provider, PocketMind may send request data directly to the selected provider. Depending on the feature, this data may include your prompt, recent chat context, system or character instructions, extracted document text, encoded image data, image generation prompts, generation settings, and provider authentication tokens.</p>
+    <p>PocketMind does not control how third-party providers process, store, retain, or use data after it is sent to them. Your use of these providers is subject to their own privacy policies and terms of service.</p>
+
+    <h2>6. Document and File Attachments</h2>
+    <p>PocketMind can read or extract content from files you attach, such as PDF, DOCX, TXT, code, CSV, JSON, log files, and images. If you use an offline model, extracted text remains local to the device. If you use an online model, extracted text may be sent to the selected online provider as part of the request.</p>
+
+    <h2>7. Image Attachments and Vision Features</h2>
+    <p>PocketMind may allow image attachments for vision-capable online models. When an image is attached and a supported online vision provider is selected, the image may be encoded and sent directly to that provider for analysis. Offline text models may not understand image pixels directly.</p>
+
+    <h2>8. Image Generation</h2>
+    <p>PocketMind supports image generation through offline and online modes. Offline image generation processes prompts and models locally when a supported local image model is used. Free or premium online image generation providers may receive your prompt and generation settings when you choose those modes.</p>
+
+    <h2>9. Backups</h2>
+    <p>PocketMind may allow you to export backup files. These backups may include saved chats, prompts, characters, and settings. You are responsible for storing backup files securely.</p>
+
+    <h2>10. Permissions</h2>
+    <ul>
+      <li>File/document access when you choose to import or attach files.</li>
+      <li>Notification permission for downloads or response notifications.</li>
+      <li>Storage/gallery access when saving generated images, depending on Android version.</li>
+      <li>Internet access for online AI providers, model downloads, online image generation, and API key validation.</li>
+    </ul>
+
+    <h2>11. Third-Party Services</h2>
+    <p>PocketMind may connect to third-party services when you use online features, including Groq, Google Gemini / Google AI services, Hugging Face, Together AI, Pollinations, or model hosting platforms. These services are independent third parties and their handling of data is governed by their own policies.</p>
+
+    <h2>12. Data Sharing</h2>
+    <p>PocketMind does not sell your personal data. Data may be shared only at your direction when you choose an online model or provider, for model downloads, for legal compliance, or for security and abuse prevention if necessary.</p>
+
+    <h2>13. Data Retention and Deletion</h2>
+    <p>Data stored locally in PocketMind remains on your device until you delete it, clear app storage, uninstall the App, delete chats, remove models, clear cache, remove API keys, delete generated images, or delete exported backups. Data sent to third-party providers is subject to those providers’ retention policies.</p>
+
+    <h2>14. Security</h2>
+    <p>PocketMind aims to handle user data securely and limit data access to what is needed for the selected feature. However, no app, device, network, or storage system is completely secure. You are responsible for protecting your device, lock screen, backups, exported files, API keys, and sensitive files.</p>
+
+    <h2>15. Children’s Privacy</h2>
+    <p>PocketMind is not intended for children under the age required by applicable law to use AI services or online accounts without parental consent.</p>
+
+    <h2>16. Medical, Legal, Financial, and Professional Disclaimer</h2>
+    <p>PocketMind is for informational and educational purposes only. It does not provide professional medical, legal, financial, investment, or other licensed professional services. Always verify important information independently and consult qualified professionals where appropriate.</p>
+
+    <h2>17. AI Output Accuracy</h2>
+    <p>AI-generated responses may be incomplete, inaccurate, outdated, offensive, unsafe, or misleading. You are responsible for reviewing and verifying AI-generated content before relying on it.</p>
+
+    <h2>18. International Users</h2>
+    <p>If you use PocketMind outside Pakistan, your information may be processed by third-party providers in other countries when you use online features.</p>
+
+    <h2>19. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy to reflect new features, provider changes, legal requirements, or security improvements. The updated version will be posted at this same public privacy policy URL with an updated effective date.</p>
+
+    <h2>20. Contact</h2>
+    <p>For privacy questions, deletion requests, or support, contact the developer at: +92 340 5055603.</p>
+    
+    <div class="policy-actions"><a href="#home" class="btn-secondary">Back to Top ↑</a><a href="https://wa.me/923405055603?text=Hi%20Nouman%2C%20I%20have%20a%20question%20about%20PocketMind%20privacy." target="_blank" rel="noopener" class="btn-primary">Contact Me →</a></div>
+  </div>
+</div></section>
+<div class="divider"></div>
+
 <!-- ACHIEVEMENTS -->
 <section id="achievements"><div class="section-inner">
   <p class="section-tag">Recognition</p>
@@ -411,24 +648,27 @@ const EJ_TEMPLATE = 'template_hbkd4sr';
   <h2 class="section-title">Let's build something <em>great</em></h2>
   <div class="contact-grid reveal">
     <div>
-      <p class="contact-intro">Whether you have a project in mind, an opportunity, or just want to connect — my inbox is always open. Messages arrive directly in my Gmail inbox.</p>
+      <p class="contact-intro">Have an AI app, chatbot, automation system, website, surveillance AI, or custom model idea? Fill the form and your project inquiry will open with a polished message already prepared from your details.</p>
       <div class="contact-items">
-        <a href="mailto:nouman.shakeel555@gmail.com" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>nouman.shakeel555@gmail.com</a>
+        <a href="https://wa.me/923405055603?text=Hi%20Nouman%2C%20I%20want%20to%20discuss%20an%20AI%20project." target="_blank" rel="noopener" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></div>Direct Project Inquiry</a>
         <a href="tel:+923405055603" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg></div>+92 340 5055603</a>
-        <a href="https://linkedin.com/in/nouman-shakeel" target="_blank" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>linkedin.com/in/nouman-shakeel</a>
-        <a href="https://github.com/noumanshakeel555-lang" target="_blank" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>github.com/noumanshakeel555-lang</a>
+        <a href="https://linkedin.com/in/nouman-shakeel" target="_blank" rel="noopener" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>linkedin.com/in/nouman-shakeel</a>
+        <a href="https://github.com/noumanshakeel555-lang" target="_blank" rel="noopener" class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>github.com/noumanshakeel555-lang</a>
         <div class="contact-item"><div class="contact-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>Islamabad, Pakistan</div>
       </div>
     </div>
     <div class="contact-form">
       <div class="form-row">
         <div class="form-group"><label class="form-label">Name</label><input type="text" id="f-name" class="form-input" placeholder="Your name"></div>
-        <div class="form-group"><label class="form-label">Email</label><input type="email" id="f-email" class="form-input" placeholder="your@email.com"></div>
+        <div class="form-group"><label class="form-label">Contact Number</label><input type="tel" id="f-phone" class="form-input" placeholder="+1 / +44 / +92 ..."></div>
       </div>
-      <div class="form-group"><label class="form-label">Subject</label><input type="text" id="f-subject" class="form-input" placeholder="Project / Collaboration / Hiring..."></div>
-      <div class="form-group"><label class="form-label">Message</label><textarea id="f-message" class="form-textarea" placeholder="Tell me about your project or opportunity..."></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Service Needed</label><input type="text" id="f-service" class="form-input" placeholder="Chatbot / App / Website / AI automation..."></div>
+        <div class="form-group"><label class="form-label">Budget / Timeline</label><input type="text" id="f-budget" class="form-input" placeholder="$300, urgent, this month..."></div>
+      </div>
+      <div class="form-group"><label class="form-label">Project Details</label><textarea id="f-message" class="form-textarea" placeholder="Tell me what you want to build, your business type, goals, and any must-have features..."></textarea></div>
       <div id="form-status" class="form-status"></div>
-      <button class="form-submit" id="submit-btn" onclick="sendEmail()">Send Message →</button>
+      <button class="form-submit" id="submit-btn" onclick="sendContactLead()">Submit Inquiry →</button>
     </div>
   </div>
 </div></section>
@@ -438,7 +678,7 @@ const EJ_TEMPLATE = 'template_hbkd4sr';
   <div class="footer-links">
     <a href="https://linkedin.com/in/nouman-shakeel" target="_blank">LinkedIn</a>
     <a href="https://github.com/noumanshakeel555-lang" target="_blank">GitHub</a>
-    <a href="mailto:nouman.shakeel555@gmail.com">Email</a>
+    <a href="#privacy">Privacy Policy</a><a href="https://wa.me/923405055603" target="_blank" rel="noopener">Contact</a>
   </div>
 </footer>
 
@@ -653,29 +893,23 @@ document.querySelectorAll('#cert-filter .cert-btn').forEach(b=>b.addEventListene
   this.classList.add('active'); renderCerts(this.dataset.cf);
 }));
 
-/* ── EMAILJS ── */
-emailjs.init(EJ_KEY);
-async function sendEmail(){
+/* ── CONTACT LEAD ROUTING ── */
+function sendContactLead(){
   const name=document.getElementById('f-name').value.trim();
-  const email=document.getElementById('f-email').value.trim();
-  const subj=document.getElementById('f-subject').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const service=document.getElementById('f-service').value.trim();
+  const budget=document.getElementById('f-budget').value.trim();
   const msg=document.getElementById('f-message').value.trim();
   const btn=document.getElementById('submit-btn');
-  const fields=[document.getElementById('f-name'),document.getElementById('f-email'),document.getElementById('f-subject'),document.getElementById('f-message')];
+  const fields=[document.getElementById('f-name'),document.getElementById('f-phone'),document.getElementById('f-service'),document.getElementById('f-message')];
   let ok=true;
   fields.forEach(f=>{f.style.borderColor=f.value.trim()?'':'rgba(239,68,68,.5)';if(!f.value.trim())ok=false;});
-  if(!ok){showSt('error','Please fill in all fields.');return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showSt('error','Please enter a valid email address.');return;}
-  btn.textContent='Sending…';btn.disabled=true;
-  document.getElementById('form-status').className='form-status';
-  try{
-    await emailjs.send(EJ_SERVICE,EJ_TEMPLATE,{from_name:name,from_email:email,subject:subj,message:msg,reply_to:email});
-    showSt('success','✓ Message sent! I\'ll get back to you within 24 hours.');
-    fields.forEach(f=>f.value='');
-  }catch(e){
-    console.error(e);
-    showSt('error','✗ Could not send. Please email me directly: nouman.shakeel555@gmail.com');
-  }finally{btn.textContent='Send Message →';btn.disabled=false;}
+  if(!ok){showSt('error','Please fill in your name, contact number, service needed, and project details.');return;}
+  const text=`Hi Nouman, I want to discuss a project.%0A%0AName: ${encodeURIComponent(name)}%0AContact Number: ${encodeURIComponent(phone)}%0AService Needed: ${encodeURIComponent(service)}%0ABudget / Timeline: ${encodeURIComponent(budget || 'Not specified')}%0A%0AProject Details:%0A${encodeURIComponent(msg)}%0A%0AI came from your portfolio website.`;
+  btn.textContent='Opening contact window…';btn.disabled=true;
+  showSt('success','Opening your prepared project message.');
+  window.open(`https://wa.me/${CONTACT_NUMBER}?text=${text}`,'_blank','noopener');
+  setTimeout(()=>{btn.textContent='Submit Inquiry →';btn.disabled=false;},900);
 }
 function showSt(type,msg){const el=document.getElementById('form-status');el.textContent=msg;el.className='form-status '+type;}
 
