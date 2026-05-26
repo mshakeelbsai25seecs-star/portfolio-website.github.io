@@ -161,11 +161,17 @@
   .pm-desc{color:var(--text-muted);font-size:1rem;line-height:1.78;max-width:740px;margin-bottom:24px;}
   .pm-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
   .pm-device{min-height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:20px;}
-  .pm-orb{height:260px;border-radius:28px;border:1px solid var(--border-bright);background:radial-gradient(circle at 50% 40%,rgba(99,179,255,.32),rgba(99,179,255,.04) 50%,transparent 70%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-  .pm-orb::before{content:'';position:absolute;width:180px;height:180px;border-radius:50%;border:1px solid rgba(99,179,255,.42);box-shadow:0 0 70px rgba(99,179,255,.28),inset 0 0 44px rgba(99,179,255,.18);animation:pulseorb 4s ease-in-out infinite;}
-  .pm-logo-frame{width:190px;height:190px;border-radius:42px;background:linear-gradient(135deg,rgba(99,179,255,.22),rgba(245,200,66,.08));border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;box-shadow:0 0 55px rgba(99,179,255,.18);position:relative;z-index:2;overflow:hidden;}
-  .pm-logo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14px;filter:drop-shadow(0 16px 34px rgba(99,179,255,.25));z-index:3;}
-  .pm-logo-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;padding:18px;color:var(--cyan);background:rgba(5,8,16,.2);}
+  .pm-orb{height:260px;border-radius:28px;border:1px solid var(--border-bright);background:
+    radial-gradient(circle at 50% 42%,rgba(99,179,255,.38),rgba(99,179,255,.08) 44%,transparent 72%),
+    linear-gradient(135deg,rgba(99,179,255,.08),rgba(255,255,255,.015));
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .pm-orb::before{content:'';position:absolute;width:205px;height:205px;border-radius:50%;border:1px solid rgba(99,179,255,.34);box-shadow:0 0 80px rgba(99,179,255,.28),inset 0 0 44px rgba(99,179,255,.16);animation:pulseorb 4s ease-in-out infinite;}
+  .pm-orb::after{content:'';position:absolute;width:310px;height:120px;border-radius:50%;background:linear-gradient(90deg,transparent,rgba(99,179,255,.15),transparent);filter:blur(18px);transform:rotate(-12deg);opacity:.9;}
+  .pm-logo-frame{width:210px;height:210px;border-radius:52px;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(99,179,255,.06) 42%,rgba(5,8,16,.24));border:1px solid rgba(99,179,255,.38);display:flex;align-items:center;justify-content:center;box-shadow:0 24px 75px rgba(0,0,0,.42),0 0 70px rgba(99,179,255,.22),inset 0 1px 0 rgba(255,255,255,.16);position:relative;z-index:2;overflow:hidden;padding:18px;}
+  .pm-logo-frame::before{content:'';position:absolute;inset:18px;border-radius:40px;background:radial-gradient(circle at 50% 28%,rgba(99,179,255,.16),rgba(2,6,23,.72));border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 0 35px rgba(99,179,255,.11);}
+  .pm-logo-frame::after{content:'';position:absolute;left:34px;right:34px;top:28px;height:42px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.16),transparent);opacity:.35;pointer-events:none;}
+  .pm-logo-img{position:relative;width:150px;height:150px;object-fit:cover;padding:0;border-radius:34px;filter:drop-shadow(0 20px 35px rgba(99,179,255,.28));box-shadow:0 18px 48px rgba(0,0,0,.44),0 0 34px rgba(99,179,255,.24);z-index:3;background:#050810;border:1px solid rgba(99,179,255,.22);}
+  .pm-logo-placeholder{position:absolute;inset:18px;border-radius:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:18px;color:var(--cyan);background:radial-gradient(circle at 50% 35%,rgba(99,179,255,.18),rgba(5,8,16,.55));z-index:2;}
   .pm-logo-placeholder strong{font-size:3rem;font-weight:800;letter-spacing:-.08em;text-shadow:0 0 34px rgba(99,179,255,.45);line-height:1;}
   .pm-logo-placeholder span{font-family:var(--font-mono);font-size:.58rem;line-height:1.45;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);max-width:140px;}
 
@@ -464,7 +470,7 @@ const CONTACT_NUMBER = '923405055603';
       <div class="pm-orb">
         <div class="pm-logo-frame" title="Place pocketmind-logo.png in the same folder as index.html">
           <div class="pm-logo-placeholder"><strong>PM</strong><span>Place pocketmind-logo.png beside index.html</span></div>
-          <img class="pm-logo-img" src="./pocketmind-logo.png" alt="PocketMind Hybrid AI logo" onload="this.previousElementSibling.style.display='none';" onerror="this.style.display='none';this.previousElementSibling.style.display='flex';">
+          <img class="pm-logo-img" src="./pocketmind-logo.png" alt="PocketMind Hybrid AI logo" onload="this.previousElementSibling.style.display='none';this.classList.add('loaded');" onerror="this.style.display='none';this.previousElementSibling.style.display='flex';">
         </div>
       </div>
       <div class="pm-metrics">
