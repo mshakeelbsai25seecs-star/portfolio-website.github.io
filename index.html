@@ -222,6 +222,42 @@
   .policy-callout strong{color:var(--cyan);}
   .policy-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;padding-top:24px;border-top:1px solid var(--border);}
 
+
+  /* FULL PRIVACY POLICY AS AN INTERNAL PAGE */
+  #privacy-policy{display:none;}
+  .privacy-policy-divider{display:none;}
+  body.privacy-mode{overflow:hidden;}
+  body.privacy-mode #privacy-policy{
+    display:block;
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    overflow-y:auto;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(99,179,255,.16), transparent 34%),
+      radial-gradient(circle at 85% 20%, rgba(245,200,66,.08), transparent 28%),
+      var(--bg);
+  }
+  body.privacy-mode > canvas,
+  body.privacy-mode > nav,
+  body.privacy-mode > section:not(#privacy-policy),
+  body.privacy-mode > .divider,
+  body.privacy-mode > footer,
+  body.privacy-mode > .modal-overlay{
+    display:none !important;
+  }
+  body.privacy-mode #privacy-policy .section-inner{
+    padding-top:56px;
+    padding-bottom:80px;
+  }
+  body.privacy-mode #privacy-policy .privacy-panel{
+    position:relative;
+    top:auto;
+  }
+  body.privacy-mode #privacy-policy .policy-card{
+    box-shadow:0 24px 120px rgba(0,0,0,.35), 0 0 80px rgba(99,179,255,.08);
+  }
+
   /* CONTACT */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
   .contact-intro{font-size:1.05rem;color:var(--text-muted);line-height:1.75;max-width:440px;margin-bottom:28px;}
@@ -618,7 +654,7 @@ const CONTACT_NUMBER = '923405055603';
     <div class="policy-actions"><a href="#home" class="btn-secondary">Back to Top ↑</a><a href="https://wa.me/923405055603?text=Hi%20Nouman%2C%20I%20have%20a%20question%20about%20PocketMind%20privacy." target="_blank" rel="noopener" class="btn-primary">Contact Me →</a></div>
   </div>
 </div></section>
-<div class="divider"></div>
+<div class="divider privacy-policy-divider"></div>
 
 <!-- ACHIEVEMENTS -->
 <section id="achievements"><div class="section-inner">
@@ -933,6 +969,20 @@ function observeReveal(){
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 }
 observeReveal();
+
+/* ── PRIVACY POLICY INTERNAL PAGE ROUTING ── */
+function handlePrivacyRoute(){
+  const isPolicyPage = window.location.hash === '#privacy-policy';
+  document.body.classList.toggle('privacy-mode', isPolicyPage);
+
+  if(isPolicyPage){
+    const policy = document.getElementById('privacy-policy');
+    if(policy) policy.scrollTop = 0;
+  }
+}
+window.addEventListener('hashchange', handlePrivacyRoute);
+window.addEventListener('load', handlePrivacyRoute);
+handlePrivacyRoute();
 </script>
 </body>
 </html>
