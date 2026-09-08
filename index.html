@@ -714,10 +714,10 @@ const CONTACT_NUMBER = '923405055603';
       <a href="#privacy-policy" class="btn-primary">Open Full Privacy Policy →</a>
     </div>
     <div class="privacy-list">
-      <div class="privacy-item"><strong>Offline mode stays local</strong><span>Local chat, document text, and supported offline image generation remain on the user’s device when offline mode is selected.</span></div>
-      <div class="privacy-item"><strong>Online mode is optional</strong><span>Cloud AI providers are contacted only when the user chooses an online model or online image provider.</span></div>
-      <div class="privacy-item"><strong>User-controlled files</strong><span>Documents, images, models, backups, and generated images are controlled through app features and device storage.</span></div>
-      <div class="privacy-item"><strong>No developer ad tracking</strong><span>The app is designed around AI functionality, not selling conversations or using private chats for advertising.</span></div>
+      <div class="privacy-item"><strong>Offline chat stays on-device</strong><span>Offline chat and local model inference are processed on your phone. Unlimited offline chat is available on the free tier.</span></div>
+      <div class="privacy-item"><strong>Online features are optional</strong><span>Cloud chat, image, and voice providers are contacted only when you choose those modes. Premium online chat can use your own API keys (BYOK).</span></div>
+      <div class="privacy-item"><strong>Voice &amp; Image Studio</strong><span>Voice generation/cloning and Image Studio require PocketMind Pro. Online voice may send text and, for cloning, reference audio to the selected provider.</span></div>
+      <div class="privacy-item"><strong>No ads on your chats</strong><span>PocketMind is not designed to sell your conversations for advertising. Purchases use Google Play Billing.</span></div>
     </div>
   </div>
 </div></section>
@@ -734,87 +734,197 @@ const CONTACT_NUMBER = '923405055603';
       <a href="#privacy" class="btn-primary">Back to Privacy Summary →</a>
     </div>
     <div class="privacy-list">
-      <div class="privacy-item"><strong>Offline mode stays local</strong><span>Local prompts, chat messages, document text, and offline image generation stay on the user’s device when offline mode is used.</span></div>
-      <div class="privacy-item"><strong>Online mode is optional</strong><span>When an online provider is selected, request data may be sent directly to that chosen provider for AI processing.</span></div>
-      <div class="privacy-item"><strong>API keys stay on device</strong><span>User-provided provider keys are stored locally and used only to call the selected provider.</span></div>
-      <div class="privacy-item"><strong>No developer cloud collection</strong><span>PocketMind does not operate its own cloud server to sell, analyse, or collect private conversations.</span></div>
-      <div class="privacy-item"><strong>Files are user-controlled</strong><span>Attached PDFs, DOCX files, text files, logs, code files, and images are processed according to the mode selected by the user.</span></div>
-      <div class="privacy-item"><strong>Delete anytime</strong><span>Users can delete local chats, API keys, downloaded models, cache, backups, and app data from the app or Android settings.</span></div>
+      <div class="privacy-item"><strong>Local-first by default</strong><span>Chats, settings, keys, quotas, entitlements, downloaded models, and many generated files are stored on your device unless you send content online.</span></div>
+      <div class="privacy-item"><strong>You choose the destination</strong><span>Online chat, image, voice, model downloads, and organization-server mode send data only to the services you select.</span></div>
+      <div class="privacy-item"><strong>API keys stay on device</strong><span>Bring-your-own-key (BYOK) credentials are stored locally and used to authenticate requests from your device to the selected provider.</span></div>
+      <div class="privacy-item"><strong>Subscriptions via Google Play</strong><span>PocketMind Pro purchases and restorations are handled through Google Play Billing under Google’s policies.</span></div>
+      <div class="privacy-item"><strong>Voice samples are sensitive</strong><span>If you use voice cloning or upload reference audio to an online voice provider, that audio may leave your device.</span></div>
+      <div class="privacy-item"><strong>Delete anytime</strong><span>You can delete chats, keys, models, voice outputs, cache, and app data in the app or via Android settings / uninstall.</span></div>
     </div>
   </div>
   <div class="policy-card reveal" style="margin-top:32px;">
 
     <div class="pm-kicker">Public Privacy Policy</div>
     <h1>PocketMind <em>Hybrid AI</em></h1>
-    <div class="policy-meta">Effective Date: May 26, 2026 · Developer: Muhammad Nouman Shakeel / PocketMind · Country: Pakistan</div>
-    <p>PocketMind Hybrid AI (“PocketMind,” “the App,” “we,” “our,” or “us”) is an AI assistant app that allows users to chat with offline AI models, use optional online AI providers, attach documents and images, generate images, manage local models, and customize the app experience.</p>
-    <div class="policy-callout"><strong>Summary:</strong> Offline features are processed locally on your device. Online features are optional and only send information to the selected third-party provider when you choose to use those features. PocketMind does not operate its own cloud server to collect, store, sell, or analyze your private conversations.</div>
+    <div class="policy-meta">Effective Date: September 7, 2026 · Last Updated: September 7, 2026 · Developer: Muhammad Nouman Shakeel / PocketMind · Country: Pakistan</div>
+    <p>This Privacy Policy describes how PocketMind Hybrid AI for Android (“PocketMind,” “the App,” “we,” “our,” or “us”) handles information when you install and use the App. PocketMind is a hybrid AI assistant that can run AI features on your device (offline) and, when you choose, connect to third-party online AI services, your organization’s private AI server, Google Play Billing, and related platform services.</p>
+    <p>By downloading, installing, or using the App, you acknowledge that you have read this Privacy Policy. If you do not agree, do not use the App’s online, voice, image, organization-server, or paid features that require data processing beyond local on-device storage.</p>
+    <div class="policy-callout"><strong>Plain-language summary:</strong> We do not operate a PocketMind-owned cloud account service that stores your private chats for us to sell or advertise against. Most personal content stays on your phone unless <em>you</em> choose an online model, Image Studio online mode, Voice Studio online mode, model download, organization server, or a Google Play purchase. Third parties you select (and Google Play, where purchases are involved) process data under <em>their</em> policies—not under ours alone.</div>
 
-    <h2>1. Information We Do Not Collect on Our Servers</h2>
-    <p>PocketMind does not maintain developer-operated servers for collecting user conversations or files. We do not sell your personal data, use your conversations for advertising, collect your private chats on a PocketMind server, or collect your API keys on a PocketMind server.</p>
+    <h2>1. Scope and Roles</h2>
+    <p><strong>1.1 What this policy covers.</strong> This policy covers the PocketMind Hybrid AI Android application distributed through Google Play (application identity associated with PocketMind Hybrid AI) and related in-app features described below.</p>
+    <p><strong>1.2 What this policy does not cover.</strong> This policy does not govern websites, APIs, models, or servers operated by third parties (for example Groq, Google Gemini / Google AI, OpenRouter, Hugging Face, Together AI, Pollinations, OpenAI, ElevenLabs, your employer’s organization server, or Google Play). When content leaves your device to those services, their privacy policies and terms apply in addition to this policy.</p>
+    <p><strong>1.3 Controller / developer.</strong> For local app storage and the PocketMind product experience, the developer is Muhammad Nouman Shakeel (PocketMind), Pakistan. For purchase processing, Google LLC / Google Play acts as payment processor. For AI inference you request online, the selected provider acts as an independent processor/controller of that request content under its own terms.</p>
 
-    <h2>2. Information Stored Locally on Your Device</h2>
-    <p>PocketMind may store information locally on your device, including chat messages, saved conversations, chat titles, custom characters, custom system prompts, app settings, API keys that you choose to save, downloaded offline AI model files, imported GGUF model files, image generation model files, temporary cache files, extracted text from attached files, generated images if you choose to save them, and backup files if you export them.</p>
-
-    <h2>3. API Keys</h2>
-    <p>PocketMind allows you to enter API keys for supported online AI providers. These keys are stored locally on your device. When you use an online provider, the relevant key is sent from your device directly to that provider so the request can be processed. You are responsible for keeping your API keys private and following each provider’s terms, billing rules, usage limits, and privacy policies.</p>
-
-    <h2>4. Offline AI Processing</h2>
-    <p>When using offline GGUF models or other local model features, PocketMind processes AI requests on your device. In offline mode, prompts and responses are not sent to online AI providers by PocketMind. Offline performance depends on your device hardware, available RAM, CPU, Android Vulkan/mobile GPU support where available, storage, and selected model size.</p>
-
-    <h2>5. Online AI Processing</h2>
-    <p>If you select an online model or online image generation provider, PocketMind may send request data directly to the selected provider. Depending on the feature, this data may include your prompt, recent chat context, system or character instructions, extracted document text, encoded image data, image generation prompts, generation settings, and provider authentication tokens.</p>
-    <p>PocketMind does not control how third-party providers process, store, retain, or use data after it is sent to them. Your use of these providers is subject to their own privacy policies and terms of service.</p>
-
-    <h2>6. Document and File Attachments</h2>
-    <p>PocketMind can read or extract content from files you attach, such as PDF, DOCX, TXT, code, CSV, JSON, log files, and images. If you use an offline model, extracted text remains local to the device. If you use an online model, extracted text may be sent to the selected online provider as part of the request.</p>
-
-    <h2>7. Image Attachments and Vision Features</h2>
-    <p>PocketMind may allow image attachments for vision-capable online models. When an image is attached and a supported online vision provider is selected, the image may be encoded and sent directly to that provider for analysis. Offline text models may not understand image pixels directly.</p>
-
-    <h2>8. Image Generation</h2>
-    <p>PocketMind supports image generation through offline and online modes. Offline image generation processes prompts and models locally when a supported local image model is used. Free or premium online image generation providers may receive your prompt and generation settings when you choose those modes.</p>
-
-    <h2>9. Backups</h2>
-    <p>PocketMind may allow you to export backup files. These backups may include saved chats, prompts, characters, and settings. You are responsible for storing backup files securely.</p>
-
-    <h2>10. Permissions</h2>
+    <h2>2. Information We Do Not Collect on PocketMind-Operated Servers</h2>
+    <p>PocketMind does <strong>not</strong> currently operate a developer-owned backend that creates user accounts for PocketMind, hosts your chat history in a PocketMind cloud inbox, or sells your conversation content to advertisers.</p>
+    <p>In particular, we do not intentionally:</p>
     <ul>
-      <li>File/document access when you choose to import or attach files.</li>
-      <li>Notification permission for downloads or response notifications.</li>
-      <li>Storage/gallery access when saving generated images, depending on Android version.</li>
-      <li>Internet access for online AI providers, model downloads, online image generation, and API key validation.</li>
+      <li>Sell your personal data or private chat content;</li>
+      <li>Use your private chats to build advertising profiles for third-party ads in the App;</li>
+      <li>Require you to create a PocketMind cloud login to use core local chat;</li>
+      <li>Upload your locally stored API keys to a PocketMind-owned server.</li>
+    </ul>
+    <p><strong>Important limitation:</strong> “We do not collect on PocketMind servers” does <em>not</em> mean “nothing ever leaves your phone.” Content leaves your phone when you use online AI, downloads, organization servers, or Google Play. Android, Google Play Services, and network carriers may also process technical data according to their own policies.</p>
+
+    <h2>3. Information Stored Locally on Your Device</h2>
+    <p>Depending on how you use the App, PocketMind may store information in on-device app storage (and related Android storage you authorize), including without limitation:</p>
+    <ul>
+      <li>Chat messages, chat session titles, pinned/saved chats, and related metadata;</li>
+      <li>Custom characters / assistants, system prompts, and prompt-library entries;</li>
+      <li>App settings (theme, performance options such as Vulkan/GPU preferences where available, memory/creativity settings, selected models, feature toggles);</li>
+      <li>API keys and access tokens you choose to save (for example Groq, Gemini, OpenRouter, Hugging Face, Together AI, Pollinations, OpenAI, ElevenLabs, and organization-server access keys);</li>
+      <li>Organization server address, selected organization model id, and connection preferences;</li>
+      <li>Freemium usage counters (for example daily free-tier online chat quota) and entitlement flags (for example PocketMind Pro subscription status mirrors, lifetime unlock from a prior paid-app upgrade where applicable);</li>
+      <li>Downloaded or imported offline chat models (for example GGUF files), offline image model files, caches, and temporary working files;</li>
+      <li>Extracted text from documents you attach;</li>
+      <li>Generated images, generated/synthesized audio files (for example under app-private voice output folders), and reference audio paths you select for cloning;</li>
+      <li>Backup/export files if you create them.</li>
+    </ul>
+    <p>Local storage remains on your device until you delete it, clear app data, uninstall the App, or otherwise remove those files. Device backups (Android backup / manufacturer cloud backup), if enabled by you or your device settings, may copy app data off-device under those systems’ rules.</p>
+
+    <h2>4. Freemium Features, Quotas, and PocketMind Pro</h2>
+    <p>PocketMind offers a freemium experience. Exact limits may change with product updates, but as of this policy’s last update the App is designed around the following model:</p>
+    <ul>
+      <li><strong>Free — offline chat:</strong> Unlimited chat with offline/local models (subject to your device capability and available models).</li>
+      <li><strong>Free — free-tier online chat:</strong> A limited number of free-tier online chat prompts per local calendar day (currently five). Quota counters are stored locally on your device.</li>
+      <li><strong>Free — premium online chat with your own keys (BYOK):</strong> Unlimited premium online chat when you supply and use your own provider API keys, subject to the provider’s billing and limits.</li>
+      <li><strong>PocketMind Pro:</strong> Unlocks Image Studio and Voice Studio (voice generation and voice cloning). Pro is offered via Google Play subscriptions (product ids such as <code>pocketmind_pro_monthly</code> and <code>pocketmind_pro_yearly</code>). Eligible upgrades from a prior paid app version may receive a lifetime unlock recorded locally and validated against Play where applicable.</li>
+    </ul>
+    <p>Entitlement state may be stored on-device and refreshed through Google Play Billing purchase/restore flows. We do not invent a separate PocketMind payment account; billing identity is handled by Google under your Google account.</p>
+
+    <h2>5. API Keys and Bring-Your-Own-Key (BYOK)</h2>
+    <p>PocketMind allows you to enter API keys / tokens for supported providers. Those credentials are stored locally on your device and are transmitted from your device to the selected provider when you validate a key or run a request.</p>
+    <p>You are solely responsible for:</p>
+    <ul>
+      <li>Keeping keys confidential;</li>
+      <li>Complying with each provider’s terms, acceptable-use rules, age requirements, rate limits, and fees;</li>
+      <li>Revoking keys if your device is lost, shared, or compromised;</li>
+      <li>Understanding that anyone with physical or backup access to an unlocked device may be able to access locally stored keys.</li>
     </ul>
 
-    <h2>11. Third-Party Services</h2>
-    <p>PocketMind may connect to third-party services when you use online features, including Groq, Google Gemini / Google AI services, Hugging Face, Together AI, Pollinations, or model hosting platforms. These services are independent third parties and their handling of data is governed by their own policies.</p>
+    <h2>6. Offline AI Processing</h2>
+    <p>When you select offline/local models, PocketMind processes prompts and generates responses on your device using on-device model runtimes (for example local LLM inference). In true offline mode, PocketMind does not send those prompts to online chat providers.</p>
+    <p>Offline features may still require Internet for one-time actions you initiate, such as downloading a model file from a hosting provider (for example Hugging Face model repositories). After download, local inference can proceed without sending chat content to that host.</p>
+    <p>Offline performance and availability depend on your hardware (CPU/GPU/Vulkan support where used), RAM, storage, thermal limits, and selected model size. Some catalogued neural voice engines may be listed for future/on-device use while the currently guaranteed offline speech path uses Android System Text-to-Speech where implemented.</p>
 
-    <h2>12. Data Sharing</h2>
-    <p>PocketMind does not sell your personal data. Data may be shared only at your direction when you choose an online model or provider, for model downloads, for legal compliance, or for security and abuse prevention if necessary.</p>
+    <h2>7. Online Chat Processing</h2>
+    <p>If you select an online chat model, PocketMind sends request data from your device directly to the selected provider over the Internet. Depending on the model and settings, this may include:</p>
+    <ul>
+      <li>Your prompt and conversation context / recent messages;</li>
+      <li>System prompts, character instructions, and similar configuration text;</li>
+      <li>Extracted document text from attachments;</li>
+      <li>Image data for vision-capable models (encoded as required by the provider);</li>
+      <li>Your API key / bearer token;</li>
+      <li>Technical HTTP metadata required to complete the request (for example User-Agent and, for some providers such as OpenRouter, app attribution headers like a referer / app name used for rate-limiting and provider analytics).</li>
+    </ul>
+    <p>PocketMind does not control how third-party providers log, retain, train on, review, or further process content after receipt. Review each provider’s privacy policy before sending personal, confidential, biometric, medical, legal, or otherwise sensitive information.</p>
 
-    <h2>13. Data Retention and Deletion</h2>
-    <p>Data stored locally in PocketMind remains on your device until you delete it, clear app storage, uninstall the App, delete chats, remove models, clear cache, remove API keys, delete generated images, or delete exported backups. Data sent to third-party providers is subject to those providers’ retention policies.</p>
+    <h2>8. Organization / Company Server Mode</h2>
+    <p>If you configure Organization Server mode, PocketMind connects to a server address and access token that <strong>you</strong> (or your organization) provide. Expected integrations are OpenAI-compatible private gateways (for example vLLM, llama.cpp server, LiteLLM, LocalAI-style proxies, or a company-hosted gateway).</p>
+    <p>In this mode, prompts, context, and related request data are sent to that server under your organization’s control and policies. PocketMind is not responsible for your organization’s retention, monitoring, HR, security, or compliance practices. Free-tier online quota accounting in the App may treat organization-server usage as counting toward free online usage limits where the product logic so provides.</p>
 
-    <h2>14. Security</h2>
-    <p>PocketMind aims to handle user data securely and limit data access to what is needed for the selected feature. However, no app, device, network, or storage system is completely secure. You are responsible for protecting your device, lock screen, backups, exported files, API keys, and sensitive files.</p>
+    <h2>9. Documents, Files, and Knowledge Features</h2>
+    <p>You may attach or import files such as PDF, DOCX, TXT, code, CSV, JSON, logs, and similar formats. The App may extract text or otherwise prepare content for the selected AI mode.</p>
+    <ul>
+      <li><strong>Offline models:</strong> Extracted content is processed locally for that request path.</li>
+      <li><strong>Online models / organization server:</strong> Extracted content may be included in outbound requests.</li>
+    </ul>
+    <p>Do not attach files you are not authorized to process. You are responsible for complying with workplace, school, and confidentiality rules.</p>
 
-    <h2>15. Children’s Privacy</h2>
-    <p>PocketMind is not intended for children under the age required by applicable law to use AI services or online accounts without parental consent.</p>
+    <h2>10. Image Attachments and Vision</h2>
+    <p>For vision-capable online models, attached images may be encoded and transmitted to the selected provider. Offline text-only models typically cannot interpret raw image pixels. Image contents may reveal faces, locations, documents, or other sensitive information—review before sending online.</p>
 
-    <h2>16. Medical, Legal, Financial, and Professional Disclaimer</h2>
-    <p>PocketMind is for informational and educational purposes only. It does not provide professional medical, legal, financial, investment, or other licensed professional services. Always verify important information independently and consult qualified professionals where appropriate.</p>
+    <h2>11. Image Studio (Image Generation)</h2>
+    <p>Image Studio lets you generate images offline (local image models when available) or online (providers such as Hugging Face, Together AI, Pollinations, and other catalogued image endpoints). Access to Image Studio is a PocketMind Pro feature.</p>
+    <p>When you generate online, your prompt, style/size/detail settings, and authentication material may be sent to the selected image provider. Generated images may be saved locally if you choose. Offline generation keeps the prompt/model work on-device for that path, aside from any model download you previously initiated.</p>
 
-    <h2>17. AI Output Accuracy</h2>
-    <p>AI-generated responses may be incomplete, inaccurate, outdated, offensive, unsafe, or misleading. You are responsible for reviewing and verifying AI-generated content before relying on it.</p>
+    <h2>12. Voice Studio — Voice Generation and Voice Cloning</h2>
+    <p>Voice Studio provides text-to-speech generation and voice-cloning workflows. Access requires PocketMind Pro. Depending on the selected tier and model:</p>
+    <ul>
+      <li><strong>Offline / on-device:</strong> Android System Text-to-Speech may synthesize audio locally. Catalogued neural offline engines may be offered as they are supported; availability can vary by build.</li>
+      <li><strong>Free online voice:</strong> Text may be sent to Hugging Face Inference (or similar catalogued free online voice endpoints) using keys/configuration as implemented in the App.</li>
+      <li><strong>Premium online voice:</strong> Text (and for cloning, reference audio) may be sent to providers such as OpenAI Audio Speech APIs and ElevenLabs text-to-speech / cloning endpoints using your own API keys.</li>
+    </ul>
+    <p><strong>Microphone and audio.</strong> The App may request microphone / audio recording permission (Android <code>RECORD_AUDIO</code>) so you can capture speech or reference clips. Audio may also be imported from files you select. Synthesized outputs may be written to app-private storage (for example a voice output directory) and played back on device.</p>
+    <p><strong>High-risk disclosure — voice cloning:</strong> Reference audio and cloned-voice outputs can be biometric or otherwise sensitive. If you upload another person’s voice, you must have all rights and consents required by law. Do not use Voice Studio to impersonate someone without authorization, to commit fraud, or to violate platform or provider rules. Online cloning transmits reference audio to the selected provider; PocketMind cannot delete data from that provider on your behalf.</p>
 
-    <h2>18. International Users</h2>
-    <p>If you use PocketMind outside Pakistan, your information may be processed by third-party providers in other countries when you use online features.</p>
+    <h2>13. Google Play Billing and Purchase Data</h2>
+    <p>Subscriptions and in-app purchases are processed by Google Play Billing. Google may receive and process purchase tokens, product identifiers (for example monthly/yearly Pro SKUs), order data, and account/device information necessary to complete, acknowledge, restore, or refund purchases under Google’s Privacy Policy and Google Play Terms.</p>
+    <p>PocketMind may store local entitlement flags so the App can unlock Pro features. Purchase disputes, refunds, and payment methods are handled through Google Play, not through a PocketMind payment portal.</p>
 
-    <h2>19. Changes to This Privacy Policy</h2>
-    <p>We may update this Privacy Policy to reflect new features, provider changes, legal requirements, or security improvements. The updated version will be posted at this same public privacy policy URL with an updated effective date.</p>
+    <h2>14. Model Downloads and Hosting Platforms</h2>
+    <p>When you download offline chat or image models, the App may contact hosting platforms (commonly Hugging Face repositories or similar URLs in the catalog) to fetch model files. Those platforms may log IP address, request metadata, and authentication if a token is required. Model files can be large and remain on your device until deleted.</p>
 
-    <h2>20. Contact</h2>
-    <p>For privacy questions, deletion requests, or support, contact the developer at: +92 340 5055603.</p>
+    <h2>15. Permissions</h2>
+    <p>Depending on Android version and the feature you use, PocketMind may request or use:</p>
+    <ul>
+      <li><strong>Internet</strong> — online chat, image, voice, key validation, model downloads, organization server, Play Billing connectivity;</li>
+      <li><strong>Microphone / record audio</strong> — voice capture and related Voice Studio flows;</li>
+      <li><strong>Notifications</strong> — optional alerts (for example downloads or response readiness), where implemented;</li>
+      <li><strong>Wake lock</strong> — keep the device awake during long-running local inference or downloads where needed;</li>
+      <li><strong>Photos / files / documents</strong> — via Android photo pickers, document pickers, or storage access when you attach files, import models, or save outputs.</li>
+    </ul>
+    <p>You can deny non-essential permissions; related features may then be unavailable.</p>
+
+    <h2>16. Third-Party Services (Non-Exhaustive)</h2>
+    <p>Depending on your choices, PocketMind may communicate with services such as:</p>
+    <ul>
+      <li>Groq;</li>
+      <li>Google Gemini / Google AI developer APIs;</li>
+      <li>OpenRouter;</li>
+      <li>Hugging Face (router / inference / model downloads);</li>
+      <li>Together AI;</li>
+      <li>Pollinations (and related image endpoints);</li>
+      <li>OpenAI (including audio speech APIs when configured);</li>
+      <li>ElevenLabs (including text-to-speech / cloning when configured);</li>
+      <li>Your configured organization / company AI server;</li>
+      <li>Google Play / Google Play Billing / Android system services (including System TTS engines provided by the device).</li>
+    </ul>
+    <p>Provider catalogs change over time. The in-app Models / Voice / Image hubs are the authoritative list of currently offered integrations for your installed version.</p>
+
+    <h2>17. Analytics, Advertising, and Tracking</h2>
+    <p>PocketMind is designed around AI product functionality. The App does not currently integrate a separate third-party advertising SDK for the purpose of selling your chat content to advertisers. We also do not currently operate PocketMind-owned product-analytics servers that ingest your chat transcripts.</p>
+    <p>Nevertheless, Android, Google Play, crash/diagnostics facilities you enable at the OS level, and third-party AI providers may collect technical or request logs independently. Those activities are governed by those parties’ policies.</p>
+
+    <h2>18. Data Sharing</h2>
+    <p>We do not sell your personal data. Information may leave your device when:</p>
+    <ul>
+      <li>You choose an online, image, voice, download, or organization-server feature;</li>
+      <li>You purchase or restore PocketMind Pro through Google Play;</li>
+      <li>Disclosure is required by law, lawful government request, or to protect rights, safety, and security where legally permitted.</li>
+    </ul>
+
+    <h2>19. Retention and Deletion</h2>
+    <p><strong>On device:</strong> Local data remains until you delete chats/keys/models/outputs, clear app storage, or uninstall. Uninstalling removes app-private storage but does not erase data already sent to third parties, nor files you exported to shared storage.</p>
+    <p><strong>With third parties:</strong> Retention is controlled by the provider or your organization. To delete provider-side data, use that provider’s tools or contact them directly. PocketMind cannot guarantee deletion from third-party systems.</p>
+    <p><strong>Requests to the developer:</strong> Because we do not host your chat history on a PocketMind cloud account, we generally cannot retrieve or remotely wipe device-local chats. Contact us if you need help understanding deletion steps on your device.</p>
+
+    <h2>20. Security</h2>
+    <p>We design the App to limit processing to what a feature needs and to keep keys and chats in app storage by default. No method of electronic storage or transmission is completely secure. You are responsible for device lock screens, OS updates, shared-device hygiene, exported backups, and API key rotation.</p>
+
+    <h2>21. Children’s Privacy</h2>
+    <p>PocketMind is not directed to children under 13 (or the minimum age required in your jurisdiction for AI / online services without verifiable parental consent). We do not knowingly collect personal information from children under 13 on a PocketMind-operated server. If you believe a child has provided sensitive information through online providers via the App, stop use, delete local data, revoke API keys, and contact the relevant provider and us as appropriate.</p>
+
+    <h2>22. Sensitive and Regulated Use; Professional Disclaimer</h2>
+    <p>Do not use PocketMind as a substitute for professional medical, legal, financial, mental-health, or other licensed advice. AI outputs may be wrong or unsafe. If you process special-category or regulated data (health, biometrics, government IDs, children’s data, trade secrets), you must ensure you have a lawful basis and that any third-party provider you select is appropriate for that data.</p>
+
+    <h2>23. AI Output Accuracy and Acceptable Use</h2>
+    <p>AI-generated text, images, and audio may be inaccurate, biased, infringing, offensive, or misleading. You are responsible for reviewing outputs before use. You agree not to use the App to violate law, infringe others’ rights, create non-consensual intimate imagery, commit fraud/impersonation, or breach provider acceptable-use policies.</p>
+
+    <h2>24. International Transfers</h2>
+    <p>If you are outside Pakistan (or outside a provider’s home region), online features may transfer your prompts, files, audio, images, and metadata to servers in other countries. Those countries may have different data-protection laws than your own.</p>
+
+    <h2>25. Your Choices and Rights</h2>
+    <p>Depending on your location, you may have rights to access, correct, delete, or restrict certain processing, or to lodge a complaint with a supervisory authority. Because most PocketMind content is stored on your device, many rights are exercised by using in-app deletion controls and Android settings. For Google Play purchases, use Google account/Play tools. For provider-held data, contact that provider. Contact us using the details below for questions about this policy.</p>
+
+    <h2>26. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy to reflect new features (including voice, image, freemium, billing, or provider changes), legal requirements, or security improvements. The updated version will be posted at this same public privacy policy location (this website’s <strong>#privacy-policy</strong> URL) with an updated “Last Updated” date. Continued use of the App after an update means you acknowledge the revised policy. Material changes may also be described in the Google Play listing where appropriate.</p>
+
+    <h2>27. Contact</h2>
+    <p>For privacy questions, deletion guidance, or support regarding this policy, contact the developer:</p>
+    <p>Muhammad Nouman Shakeel / PocketMind<br>Phone / WhatsApp: +92 340 5055603</p>
+    <p>Please do not send passwords or full API keys over unsecured channels. If you must discuss a compromised key, revoke it at the provider first.</p>
     
     <div class="policy-actions"><a href="#home" class="btn-secondary">Back to Top ↑</a><a href="https://wa.me/923405055603?text=Hi%20Nouman%2C%20I%20have%20a%20question%20about%20PocketMind%20privacy." target="_blank" rel="noopener" class="btn-primary">Contact Me →</a></div>
   </div>
